@@ -1,0 +1,19 @@
+<div class="p-5">
+  <h5>Your Favourite Store</h5>
+  <owl-carousel-o [options]="customOptions" >
+    <ng-template carouselSlide *ngFor="let items of fav_store">
+      <div class="store-div d-flex align-items-center p-2 rounded">
+        <div class="store-logo">
+          <img
+            src="{{items.store_img}}"
+            alt=""
+          />
+        </div>
+        <div class="ms-3">
+          <h5 class="">{{items.store_name}}</h5>
+          <p class="text-xs">{{items.store_add}}</p>
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+  </div>

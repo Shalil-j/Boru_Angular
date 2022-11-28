@@ -1,0 +1,30 @@
+.cart{
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.cart span,.cart p,.cart i{
+  color: #2699FB;
+}
+
+@media only screen and (max-width: 600px) {
+.cart{
+  bottom: 1rem;
+  width: 95%;
+  border-radius: 0.5rem;
+  background: #0D6EFD;
+  padding: 0;
+}
+.cart span,.cart p,.cart i{
+  color: #ffffff;
+}
+.cart p:nth-child(1){
+  font-size: small !important;
+}
+.cart i:nth-child(1){
+  border-right: 1px solid whitesmoke;
+}
+}

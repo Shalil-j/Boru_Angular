@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-between py-3 border-bottom" *ngFor="let items of bills_history">
+  <div class="d-flex flex-column">
+      <p class="fs-5">{{items.shop_name}}</p>
+      <p class="text-xs mt-1">{{items.shop_add}}</p>
+      <p class="fw-semibold mt-3">Qty : <span>{{items.quantity}}</span></p>
+  </div>
+  <div class="d-flex flex-column justify-content-between">
+      <p class="text-end">₹ <span>{{items.amount}}</span></p>
+      <p><img class="sm-icon me-2" src="../../../../assets/asserts/icons and vectors/Done_Successful.svg" alt="">Deliverd</p>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.mobile-menu-div{
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 500;
+}
+.mobile-menu{
+  text-align: center;
+}
+.mobile-menu span{
+  display: none;
+  color: #0E74BB;
+  padding-top: 0.3rem;
+}
+.mobile-menu svg{
+  height: 1.8rem;
+  fill: rgb(165, 165, 165);
+}
+.mobile-menu.active svg{
+  fill: #0E74BB !important;
+}
+.mobile-menu.active span{
+  display: block;
+}

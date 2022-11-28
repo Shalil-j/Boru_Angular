@@ -1,0 +1,12 @@
+<owl-carousel-o [options]="Fav_store">
+  <ng-template carouselSlide *ngFor="let items of fav_store">
+    <div class="fav-store-div  text-cente  d-flex flex-column align-items-center">
+      <div class="fav-store-img d-flex justify-content-center align-items-center">
+        <img class="rounded-circle" src="{{items.store_img}}" alt="">
+      </div>
+      <span class="d-inline-block text-truncate">{{items.store_name}}</span>
+    </div>
+  </ng-template>
+</owl-carousel-o>
+
+

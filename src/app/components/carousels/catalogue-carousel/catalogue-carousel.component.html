@@ -1,0 +1,17 @@
+<div >
+<owl-carousel-o [options]="customOptions" >
+  <ng-template carouselSlide *ngFor="let items of cataloguelist">
+    <div
+    class="category-div rounded d-flex align-items-center justify-content-center"
+  >
+    <a class="page-link fw-semibold text-center" href="">
+      <img
+        src="{{items.catalogue_url}}"
+        alt=""
+      />
+      <p class="mt-2">{{items.catalogue_name}}</p>
+    </a>
+  </div>
+  </ng-template>
+</owl-carousel-o>
+</div>

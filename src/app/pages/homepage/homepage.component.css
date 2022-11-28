@@ -1,0 +1,72 @@
+:root{
+  --blue:#2C7BE5;
+}
+
+.sidebar{
+  position: sticky;
+  height: 100%;
+  z-index: 100;
+  top: 8rem;
+
+  }
+  .menu{
+      width: 15rem;
+  }
+  .menu-item h3{
+      font-weight: 400;
+  }
+  .menu-item img{
+      height: 3rem;
+
+  }
+  .menu-item h3{
+      transition:all 0.5 ease-in-out;
+      font-size: 1.3rem !important;
+  }
+  .menu-item:hover h3{
+  color: var(--blue) !important;
+  /* font-weight: 400 !important; */
+  }
+  .google-playstore img{
+      height: 4rem;
+      width: 100%;
+      object-fit: contain;
+  }
+  .menu-item img{
+      filter: grayscale(1);
+  }
+  .menu-item::after{
+      content: "";
+      width: 100%;
+      position: absolute;
+      right:-2px !important;
+      height: 100%;
+      top: 0;
+      border-right: 1px solid rgb(255, 255, 255);
+  }
+  .menu-item.active img{
+      filter: grayscale(0);
+  }
+  .menu-item.active h3{
+      font-weight: 600;
+  }
+  .menu-item.active{
+      color: var(--blue) !important;
+  }
+  .menu-item.active::after{
+      border-right: 3px solid var(--blue) !important;
+  }
+  .main-div{
+    margin-left: 4rem;
+    margin-right: 4rem;
+    padding-top: 8rem !important;
+}
+@media only screen and (max-width: 600px){
+  .main-div{
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-top: 2rem !important;
+
+}
+}

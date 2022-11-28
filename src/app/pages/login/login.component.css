@@ -1,0 +1,54 @@
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background: white !important;
+}
+html {
+  height: -webkit-fill-available;
+}
+.login-div{
+  overflow: hidden;
+}
+.upload-photo{
+  font-size: 4rem !important;
+}
+.Personal-info-icon{
+  height: 5rem;
+}
+.owl-dot.active span{
+  background-color:#0D6EFD !important;
+  width: 0.8rem !important;
+  height: 0.8rem !important;
+}
+.owl-dot span{
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+}
+.owl-dots{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pre-loader{
+  z-index: 100;
+}
+.steps-img{
+  height: 20rem;
+}
+.dot{
+  width: 0.5rem;
+  height: 0.5rem;
+  background: rgb(214, 214, 214);
+  border-radius: 50%;
+}
+.owl-dot.active{
+  background: rgb(79, 79, 255);
+}
+.pre-loader img{
+  height: 7rem;
+}
+@media only screen and (max-width: 600px){
+#login-form,.step{
+  height: 90vh;
+}
+}

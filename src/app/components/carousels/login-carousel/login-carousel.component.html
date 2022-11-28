@@ -1,0 +1,11 @@
+<owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide *ngFor="let items of login_carousel">
+    <div class="item">
+      <img class="login-img" src="{{items.img}}" alt="" />
+      <h5 class="login-content">{{items.title}}</h5>
+      <p class="mt-2 text-xs col-10 col-xl-7 mx-auto">
+        {{items.content}}
+      </p>
+    </div>
+  </ng-template>
+</owl-carousel-o>

@@ -1,0 +1,33 @@
+<div class="text-center">
+  <img class="xl-icon py-2" src="../../../../assets/asserts/icons and vectors/number change.svg" alt="">
+  <p>Verify old number</p>
+
+  <div class="w-50 mx-auto">
+
+  <div class="input-group mb-3 mt-3">
+    <input type="tel" class="focus-input form-control border border-end-0" placeholder="Phone No." aria-label="Username"
+      aria-describedby="basic-addon1">
+    <span class="input-group-text bg-white border-start-0 text-secondary py-2" id="basic-addon1"><i
+        class="bi bi-phone-fill"></i></span>
+  </div>
+
+  <div class="input-group mb-3">
+    <input id="otp" type="password" class="focus-input form-control border border-end-0 py-2" placeholder="OTP - xxxx"
+      aria-label="Username" aria-describedby="basic-addon1"
+      onchange="$('#show-otp').addClass('text-primary').removeClass('text-secondary');
+      "
+      >
+    <div class="input-group-text bg-white  border-start-0 text-secondary">
+      <button id="show-otp" class="bg-transparent text-secondary border-0">
+        <i class="bi bi-eye-fill fs-5 "></i>
+      </button>
+      <button id="hide-otp" class="d-none text-secondary bg-transparent border-0">
+        <i class="bi bi-eye-slash-fill  fs-5"></i>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+  <button class="btn btn-primary w-50 mt-5">Verify</button>
+</div>

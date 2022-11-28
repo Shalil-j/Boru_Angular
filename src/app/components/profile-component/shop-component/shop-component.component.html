@@ -1,0 +1,16 @@
+<div id="shop-list">
+
+  <div class="row py-3 border-bottom " *ngFor="let items of shop_list">
+      <div class=" col-3">
+          <div class="shop-img">
+          <img class="rounded-circle" src="{{items.shop_img}}" alt="">
+      </div>
+      </div>
+      <div class="col-9 lh-sm">
+          <p class="fs-4 text-capitalize">{{items.shop_name}}</p>
+              <p class="text-capitalize">{{items.shop_add}}</p>
+              <p class="text-xs mt-3 text-capitalize">{{items.shop_type}}</p>
+      </div>
+  </div>
+
+</div>

@@ -1,0 +1,16 @@
+
+.store-div{
+  margin-top: 7rem;
+}
+.store-img{
+  width: 12rem;
+  height: 12rem;
+  /* background-color: aqua; */
+}
+/* ----- */
+@media only screen and (max-width: 600px) {
+  .store-img{
+      width: 8rem;
+      height: 8rem;
+  }
+}

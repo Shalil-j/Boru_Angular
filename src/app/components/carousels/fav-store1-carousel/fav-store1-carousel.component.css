@@ -1,0 +1,13 @@
+.store-logo{
+  height: 5rem;
+  width: 5rem;
+  background-color: aliceblue;
+}
+.store-logo img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.store-div{
+  width: 20rem;
+}
