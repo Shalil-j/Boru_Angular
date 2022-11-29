@@ -1,0 +1,39 @@
+<div class="py-5">
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col" class="col-1">Sr.No</th>
+        <th scope="col" class="col-1">Product</th>
+        <th scope="col" class="col-2">profuct Name</th>
+        <th scope="col" class="col-1">Date</th>
+        <th scope="col" class="col-1 text-center">Qty</th>
+        <th scope="col" class="col-1">Amount</th>
+        <th scope="col" class="text-center col-1">Current Bill</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let items of bills">
+        <th scope="row">{{items.no}}</th>
+        <td>
+          <div class="product-img">
+            <img src="{{items.product_img}}" alt="">
+          </div>
+        </td>
+        <td class="fw-semibold text-capitalize">{{items.product_name}}</td>
+        <td>
+          <div>
+            <p class="fw-semibold text-capitalize">{{items.month}}</p>
+            <p>{{items.date}}</p>
+          </div>
+        </td>
+        <td class="text-center">{{items.qty}}</td>
+        <td>
+          <p>₹ <Span>{{items.ammount}}</Span></p>
+        </td>
+        <td class="text-center">
+          <p class=" badge" [ngClass]="{ 'text-bg-success': items.status === 'paid' ,'text-bg-danger':items.status === 'un-paid','text-bg-primary':items.status === 'new' }">{{items.status}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

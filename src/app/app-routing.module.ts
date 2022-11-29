@@ -12,6 +12,8 @@ import { HomepageComponentComponent } from './page-component/homepage-component/
 import { StoresComponent } from './page-component/stores/stores.component';
 import { ProductlistComponentComponent } from './components/store-component/productlist-component/productlist-component.component';
 import { SubscribedProductsComponent } from './components/store-component/subscribed-products/subscribed-products.component';
+import { ProductComponent } from './components/store-component/product/product.component';
+import { BillsHistoryComponent } from './components/store-component/bills-history/bills-history.component';
 
 
 const routes: Routes = [
@@ -21,11 +23,11 @@ const routes: Routes = [
       { path: '', component: HomepageComponentComponent },
       { path: 'Store_list', component: StoresComponent },
       // { path: 'Orders', component: HomepageComponentComponent },
-      // { path: 'Subscriptions', component: HomepageComponentComponent },
+  {path: 'subscribed-products', component: SubscribedProductsComponent},
       {path: 'profile', component: ProfileComponent,
         children: [
           { path: '', component: ShopComponentComponent },
-          // { path: 'shop', component: ShopComponentComponent },
+          { path: 'shop', component: ShopComponentComponent },
           { path: 'subscription_bills', component: SubsBillsComponentComponent },
           { path: 'previous_order_history', component: PreOrdersComponentComponent },
           { path: 'change_number', component: ChangeNumberComponentComponent },
@@ -37,11 +39,12 @@ const routes: Routes = [
   { path: 'store', component: StorepageComponent ,
 children: [
   {path: '', component: ProductlistComponentComponent},
-  {path: 'subscribed-products', component: SubscribedProductsComponent}
+  {path: 'subscribed-products', component: SubscribedProductsComponent},
+  {path: 'bill-history', component:BillsHistoryComponent},
+  {path: 'product', component: ProductComponent},
 ]
 },
   { path: 'login', component: LoginComponent },
-
 
 
 

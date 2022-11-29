@@ -7,6 +7,9 @@
   height: 12rem;
   /* background-color: aqua; */
 }
+.active{
+  background: rgb(249, 249, 249) !important;
+}
 /* ----- */
 @media only screen and (max-width: 600px) {
   .store-img{

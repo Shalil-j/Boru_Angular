@@ -23,9 +23,10 @@
       </div>
     </div>
   </div>
-  <div class="col-12 col-lg-3 mt-4 mt-md-0 d-flex flex-column align-items-centers">
-    <div class="col-12 col-lg-9 d-md-block d-flex gap-2 justify-content-center w-100">
-    <button routerLink="subscribed-products" class="border-0 bg-white w-100">
+  <div class="col-12 col-lg-3 mt-4 mt-md-0 d-flex flex-column align-items-centers ">
+    <div class="col-12 col-lg-9 d-md-block d-flex gap-4 justify-content-center w-100">
+
+      <button routerLink="subscribed-products" class="border-0 bg-white w-100" routerLinkActive="active">
     <div  class="d-flex justify-content-center border rounded  p-2 w-100">
       <div><img class="md-icon" src="../../../assets/asserts/icons and vectors/subscription vector .svg" alt=""></div>
       <div class="lh-xs ps-1 ps-md-3">
@@ -35,8 +36,8 @@
     </div>
   </button>
     <!-- --------- -->
-    <button class="border-0 bg-white w-100">
-    <div  class="mt-md-4 d-flex justify-content-center border rounded  p-2 w-100">
+    <button routerLink="bill-history" class="border-0 bg-white w-100 mt-4" routerLinkActive="active">
+    <div  class="d-flex justify-content-center border rounded  p-2 w-100">
       <div><img class="md-icon" src="../../../assets/asserts/icons and vectors/bill vector.svg" alt=""></div>
       <div class="lh-xs ps-1 ps-md-3">
         <h1 class="fs-5 text-primary">Bill History</h1>
@@ -50,8 +51,11 @@
   </div>
   </div>
   <!-- store -->
-<!-- <router-outlet></router-outlet> -->
-<app-subscribed-products></app-subscribed-products>
+  <div class="container">
+<router-outlet></router-outlet>
+</div>
+
+
   <app-cart></app-cart>
   <app-footer></app-footer>
   <app-mobile-menu></app-mobile-menu>

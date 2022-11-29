@@ -31,6 +31,7 @@ import { ProductlistComponentComponent } from './components/store-component/prod
 import { StoresComponent } from './page-component/stores/stores.component';
 import { ProductComponent } from './components/store-component/product/product.component';
 import { SubscribedProductsComponent } from './components/store-component/subscribed-products/subscribed-products.component';
+import { BillsHistoryComponent } from './components/store-component/bills-history/bills-history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { SubscribedProductsComponent } from './components/store-component/subscr
     ProductlistComponentComponent,
     StoresComponent,
     ProductComponent,
-    SubscribedProductsComponent
+    SubscribedProductsComponent,
+    BillsHistoryComponent
   ],
   imports: [
     BrowserModule,
