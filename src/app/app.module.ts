@@ -29,7 +29,8 @@ import { ManageAddComponentComponent } from './components/profile-component/mana
 import { CartComponent } from './components/cart/cart.component';
 import { ProductlistComponentComponent } from './components/store-component/productlist-component/productlist-component.component';
 import { StoresComponent } from './page-component/stores/stores.component';
-
+import { ProductComponent } from './components/store-component/product/product.component';
+import { SubscribedProductsComponent } from './components/store-component/subscribed-products/subscribed-products.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,9 @@ import { StoresComponent } from './page-component/stores/stores.component';
     ManageAddComponentComponent,
     CartComponent,
     ProductlistComponentComponent,
-    StoresComponent
+    StoresComponent,
+    ProductComponent,
+    SubscribedProductsComponent
   ],
   imports: [
     BrowserModule,

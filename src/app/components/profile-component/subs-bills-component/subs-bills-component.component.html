@@ -18,7 +18,7 @@
                   <p class="fw-semibold mt-2">Qty : <span>{{items.quantity}}</span></p>
               </div>
               <div>
-                  <p id="bill-status" class=" text-capitalize " [ngClass]="{ 'text-success': items.status === 'paid' ,'text-danger':items.status === 'un-paid','text-primary':items.status === 'new' }">{{items.status}}</p>
+                  <p id="bill-status" class="badge text-capitalize " [ngClass]="{ 'text-bg-success': items.status === 'paid' ,'text-bg-danger':items.status === 'un-paid','text-bg-primary':items.status === 'new' }">{{items.status}}</p>
                   <p class="fw-semibold">Amount : ₹ <span>{{items.amount}}</span></p>
               </div>
           </div>

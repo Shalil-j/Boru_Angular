@@ -10,6 +10,8 @@ import { PreOrdersComponentComponent } from './components/profile-component/pre-
 import { ChangeNumberComponentComponent } from './components/profile-component/change-number-component/change-number-component.component';
 import { HomepageComponentComponent } from './page-component/homepage-component/homepage-component.component';
 import { StoresComponent } from './page-component/stores/stores.component';
+import { ProductlistComponentComponent } from './components/store-component/productlist-component/productlist-component.component';
+import { SubscribedProductsComponent } from './components/store-component/subscribed-products/subscribed-products.component';
 
 
 const routes: Routes = [
@@ -32,7 +34,12 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'store', component: StorepageComponent },
+  { path: 'store', component: StorepageComponent ,
+children: [
+  {path: '', component: ProductlistComponentComponent},
+  {path: 'subscribed-products', component: SubscribedProductsComponent}
+]
+},
   { path: 'login', component: LoginComponent },
 
 
