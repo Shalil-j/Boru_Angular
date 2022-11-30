@@ -1,0 +1,77 @@
+<div class="container-md bg-white" >
+<!--  -->
+<div class="orders border-bottom border-2 p-2 p-lg-3 py-3" *ngFor="let items of orders">
+  <div class="d-flex justify-content-between pb-1">
+    <div>
+        <p class="fs-5 fw-semibold text-capitalize">{{items.shop_name}}</p>
+        <p class="text-xs text-capitalize">{{items.shop_add}}</p>
+    </div>
+    <div>
+      <!--  -->
+      <div class="d-none d-md-block" *ngIf="items.status == 'sended' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Share_1.svg" alt=""> send order</p>
+      </div>
+      <div class="d-none d-md-block" *ngIf="items.status == 'cancelled' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Cancel.svg" alt=""> Cancelled</p>
+      </div>
+      <div class="d-none d-md-block" *ngIf="items.status == 'rejected' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Reject.svg" alt=""> Rejected</p>
+      </div>
+      <div class="d-none d-md-block" *ngIf="items.status == 'pending' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Pending.svg" alt=""> Pending</p>
+      </div>
+      <div class="d-none d-md-block" *ngIf="items.status == 'preparing' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Preparing .svg" alt=""> Preparing</p>
+      </div>
+      <!--  -->
+    </div>
+  </div>
+  <!--  -->
+  <div class="row py-2 border-dash">
+    <div class="col-6 col-md-5 d-md-flex gap-3">
+      <p>{{items.date}}</p>
+      <p>{{items.time}}</p>
+    </div>
+    <div class="col-2 text-center d-none d-md-block">
+      <a class="page-link fs-5 fw-light text-primary" href="">View Summary</a>
+    </div>
+    <div class="col-6 text-end col-md-5 d-md-flex justify-content-end gap-3 align-items-end ">
+      <div *ngIf="items.isSubs == true,else notSubs">
+        <p class="badge text-bg-primary">Subscribed</p>
+      </div>
+      <ng-template #notSubs>
+      <div>
+        <p>Items : <span>{{items.items}}</span></p>
+      </div></ng-template>
+      <div>
+        <p class="fs-5 ">₹ <span>{{items.amount}}</span></p>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <div class="w-100 d-flex border-dash align-items-center justify-content-between d-md-none pt-2">
+    <div>
+      <a class="page-link fs-5 fw-light text-primary" href="">View Summary</a>
+    </div>
+      <!--  -->
+      <div class="d-none d-md-block" *ngIf="items.status == 'sended' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Share_1.svg" alt=""> send order</p>
+      </div>
+      <div class="d-none d-md-block" *ngIf="items.status == 'cancelled' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Cancel.svg" alt=""> Cancelled</p>
+      </div>
+      <div class="d-none d-md-block" *ngIf="items.status == 'rejected' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Reject.svg" alt=""> Rejected</p>
+      </div>
+      <div class="d-none d-md-block" *ngIf="items.status == 'pending' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Pending.svg" alt=""> Pending</p>
+      </div>
+      <div class="d-none d-md-block" *ngIf="items.status == 'preparing' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Preparing .svg" alt=""> Preparing</p>
+      </div>
+      <!--  -->
+
+  </div>
+</div>
+<!--  -->
+</div>

@@ -16,7 +16,7 @@
       font-weight: 400;
   }
   .menu-item img{
-      height: 3.5rem;
+      /* height: 3.5rem; */
   }
   .menu-item h3{
       transition:all 0.5 ease-in-out;

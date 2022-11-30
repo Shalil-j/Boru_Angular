@@ -90,8 +90,16 @@ input[type=number]::-webkit-inner-spin-button {
   appearance: none !important;
   margin: 0 !important;
 }
+.border-dash{
+  border:0 !important;
+
+}
 @media only screen and (max-width: 600px) {
   body{
     background-color: rgb(241, 241, 241);
+  }
+  .border-dash{
+    border-top: 2px dashed rgb(233, 233, 233) !important;
+
   }
 }

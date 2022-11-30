@@ -14,6 +14,8 @@ import { ProductlistComponentComponent } from './components/store-component/prod
 import { SubscribedProductsComponent } from './components/store-component/subscribed-products/subscribed-products.component';
 import { ProductComponent } from './components/store-component/product/product.component';
 import { BillsHistoryComponent } from './components/store-component/bills-history/bills-history.component';
+import { OrdersComponent } from './page-component/orders/orders.component';
+import { SearchResultsComponent } from './page-component/search-results/search-results.component';
 
 
 const routes: Routes = [
@@ -22,8 +24,9 @@ const routes: Routes = [
     , children: [
       { path: '', component: HomepageComponentComponent },
       { path: 'Store_list', component: StoresComponent },
-      // { path: 'Orders', component: HomepageComponentComponent },
-  {path: 'subscribed-products', component: SubscribedProductsComponent},
+      { path: 'orders', component: OrdersComponent },
+      {path: 'subscribed-products', component: SubscribedProductsComponent},
+      {path: 'search', component: SearchResultsComponent},
       {path: 'profile', component: ProfileComponent,
         children: [
           { path: '', component: ShopComponentComponent },
