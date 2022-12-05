@@ -16,6 +16,8 @@ import { ProductComponent } from './components/store-component/product/product.c
 import { BillsHistoryComponent } from './components/store-component/bills-history/bills-history.component';
 import { OrdersComponent } from './page-component/orders/orders.component';
 import { SearchResultsComponent } from './page-component/search-results/search-results.component';
+import { ManageAddComponent } from './components/address/manage-add/manage-add.component';
+import { AddAddressComponent } from './components/address/add-address/add-address.component';
 
 
 const routes: Routes = [
@@ -25,11 +27,13 @@ const routes: Routes = [
       { path: '', component: HomepageComponentComponent },
       { path: 'Store_list', component: StoresComponent },
       { path: 'orders', component: OrdersComponent },
-      {path: 'subscribed-products', component: SubscribedProductsComponent},
-      {path: 'search', component: SearchResultsComponent},
-      {path: 'profile', component: ProfileComponent,
+      { path: 'subscribed-products', component: SubscribedProductsComponent },
+      { path: 'search', component: SearchResultsComponent },
+      {
+        path: 'profile', component: ProfileComponent, data:{title: 'Profile'},
         children: [
           { path: '', component: ShopComponentComponent },
+          { path: 'manage-address', component: ManageAddComponent },
           { path: 'shop', component: ShopComponentComponent },
           { path: 'subscription_bills', component: SubsBillsComponentComponent },
           { path: 'previous_order_history', component: PreOrdersComponentComponent },
@@ -39,16 +43,17 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'store', component: StorepageComponent ,
-children: [
-  {path: '', component: ProductlistComponentComponent},
-  {path: 'subscribed-products', component: SubscribedProductsComponent},
-  {path: 'bill-history', component:BillsHistoryComponent},
-  {path: 'product', component: ProductComponent},
-]
-},
+  {
+    path: 'store', component: StorepageComponent,
+    children: [
+      { path: '', component: ProductlistComponentComponent },
+      { path: 'subscribed-products', component: SubscribedProductsComponent },
+      { path: 'bill-history', component: BillsHistoryComponent },
+      { path: 'product', component: ProductComponent },
+    ]
+  },
   { path: 'login', component: LoginComponent },
-
+  { path: 'add-address', component: AddAddressComponent },
 
 
 ];

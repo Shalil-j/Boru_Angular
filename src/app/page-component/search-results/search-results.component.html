@@ -1,36 +1,43 @@
-<div class="ms-4">
-  <div class="row gap-4 justify-content-center">
-    <button class="col-3  btn btn-primary py-2">Shops</button>
-    <button class="col-3  btn btn-primary py-2">Products</button>
+<div class="px-3 ">
+  <div class="row gap-4 justify-content-center bg-white py-3">
+    <button id="shop-btn" #shopbtn class="col-3 active rounded py-2" (click)="toggleShops(shopbtn)">Shops</button>
+    <button id="product-btn" #productbtn class="col-3 active rounded  py-2" (click)="toggleProducts(productbtn)">Products</button>
   </div>
-  <div class="row mt-4">
-    <div id="shop" class="col-6">
+  <div class="row mt-2 mt-md-4">
+    <div class="nothing-to-display text-center fs-3 text-danger d-none bg-white h-100 py-5" >
+        <img class="img-fluid" src="../../../assets/asserts/icons and vectors/iStock-1346199166 [Converted].svg" alt="">
+        <p  class="text-muted">Nothing to show</p>
+    </div>
+    <div id="shop" class="col-12 col-lg-6 bg-white" *ngIf="!shopsDisplay">
+      <p class="mt-4 fs-5 fw-semibold">Shops</p>
       <!--  -->
-      <div class="border-bottom h-100 d-flex align-items-center">
+      <div class="border-bottom h-100 d-flex align-items-center shop" *ngFor="let items of shop">
       <div class="p-3 d-flex gap-3 align-items-center">
         <div class="shop-img">
-          <img src="https://media-cdn.tripadvisor.com/media/photo-s/17/54/89/b5/photo1jpg.jpg" alt="">
+          <img src="{{items.shop_img}}" alt="">
         </div>
         <div class="">
-          <p class="fs-5 fw-semibold">Mongins Bakery</p>
-          <p class="text-xs">sion circle,sion,mumbai,maharashtra 400 017</p>
-          <p class="mt-3">Bakery</p>
+          <p class="fs-5 fw-semibold text-capitalize">{{items.shop_name}}</p>
+          <p class="text-xs">{{items.shop_add}}</p>
+          <p class="mt-3 text-capitalize">{{items.shop_type}}</p>
         </div>
       </div>
     </div>
       <!--  -->
     </div>
     <!--  -->
-    <div id="Product" class="col-6">
+
+    <div id="Product" class="col-12 col-lg-6 bg-white  mt-lg-0" *ngIf="!productssDisplay">
+      <p class="mt-4 fs-5 fw-semibold">Products</p>
       <!--  -->
-      <div class="border-bottom h-100 d-flex align-items-center">
+      <div class="border-bottom h-100 d-flex align-items-center product" *ngFor="let items of product">
       <div class="p-3 d-flex gap-3 align-items-center ">
         <div class="product-img">
-          <img src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2018/10/07/740753-705966-mahanand-milk.jpg" alt="">
+          <img src="{{items.product_img}}" alt="">
         </div>
         <div class="">
-          <p class="fs-5 fw-semibold">Mahanand Milk</p>
-          <p class="mt-3">Bakery</p>
+          <p class="fs-5 fw-semibold text-capitalize">{{items.product_name}}</p>
+          <p class="mt-3">{{items.product_type}}</p>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule , Title } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +33,9 @@ import { ProductComponent } from './components/store-component/product/product.c
 import { SubscribedProductsComponent } from './components/store-component/subscribed-products/subscribed-products.component';
 import { BillsHistoryComponent } from './components/store-component/bills-history/bills-history.component';
 import { OrdersComponent } from './page-component/orders/orders.component';
+import { ManageAddComponent } from './components/address/manage-add/manage-add.component';
+import { AddAddressComponent } from './components/address/add-address/add-address.component';
+import { PreviousTabNavbarComponent } from './components/previous-tab-navbar/previous-tab-navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +66,10 @@ import { OrdersComponent } from './page-component/orders/orders.component';
     ProductComponent,
     SubscribedProductsComponent,
     BillsHistoryComponent,
-    OrdersComponent
+    OrdersComponent,
+    ManageAddComponent,
+    AddAddressComponent,
+    PreviousTabNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +77,9 @@ import { OrdersComponent } from './page-component/orders/orders.component';
     CarouselModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    Title
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

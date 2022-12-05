@@ -18,9 +18,21 @@
 .product-img img{
   width: 100%;
   height: 100%;
-  object-fit: coverage;
+  object-fit: cover
 }
-#shop, #product{
+.shop, .product{
   height: 8rem !important;
   /* background-color: rgb(253, 174, 72); */
 }
+/*  */
+#shop-btn,#product-btn{
+  border: 1px solid #95959d;
+  background-color: #ececf3;
+  color: #7e7e85;
+}
+#shop-btn.active,#product-btn.active{
+  border: 1px solid #7bc1ff;
+  background-color: #d0e6ff;
+  color: #53a9ec;
+}
+
