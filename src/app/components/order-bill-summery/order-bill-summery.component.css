@@ -1,0 +1,46 @@
+.delivery-status{
+    list-style: none;
+    padding-left: 0 !important;
+}
+.delivery-status li{
+    padding-bottom: 5rem;
+    position: relative;
+}
+.delivery-status li span{
+    background: rgb(255, 255, 255);
+    width: 2.5rem;
+    border-radius: 50%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* z-index: 2; */
+    /* position: relative; */
+
+}
+
+.delivery-status li span::before{
+    content:'';
+    position:absolute;
+    border-left:3px solid rgb(0, 102, 255);
+    left:1.2rem;
+    bottom:0;
+    top: 2rem;
+    /* z-index:-1; */
+    height:100%
+}
+.delivery-status li:last-child span::before{
+    content: none;
+}
+.delivery-status li:last-child{
+    padding-bottom: 0;
+}
+/*  */
+.bill{
+    height: 30rem;
+    overflow: hidden;
+}
+.bill-list{
+    height: 30rem;
+    overflow-y: scroll;
+}

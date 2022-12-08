@@ -7,6 +7,14 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
 
+  isOTPnull=false;
+
+  showopticon(){
+    if(this.showopticon != null){
+      this.isOTPnull= !this.isOTPnull;
+    }
+  }
+
   constructor() { }
 
   ngOnInit(): void {

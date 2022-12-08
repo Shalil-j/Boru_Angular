@@ -28,15 +28,16 @@
   height: 2rem;
 }
 /* ----------- */
-.delivery-period{
+.delivery-period-type + label {
   background: rgb(229, 229, 229);
-  /* border: 1px solid #a3a3a3; */
   color: #818181;
+  transition: 0.3ms ease-in-out;
 }
-.delivery-period.active{
-  background: rgb(214, 239, 255);
-  border: 1px solid #4fa7ff;
-  color: #4fa7ff;
+
+.delivery-period-type:checked ~ label {
+  background-color: #e1f1ff;
+  outline: 2px solid #2699FB;
+  color: #2699FB;
 }
 /*  */
 .day-checkbox{

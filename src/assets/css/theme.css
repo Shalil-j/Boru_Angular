@@ -36,7 +36,12 @@ body{
     border-radius: 37px;
     border: 3px solid #ffffff;
   }
-
+  .text-trunk{
+    display: -webkit-box;
+    -webkit-line-clamp: var(--text-trunk-line) ;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 /*  */
 h2,h3,h4,h5,h5,span,strong,p{
     margin-bottom: 0 !important;
@@ -52,7 +57,8 @@ input:focus{
   outline: none;
 }
 .focus-input:focus{
-  border: 2px solid #2C7BE5 !important;
+  outline: 2px solid #2C7BE5 !important;
+  border: 0 !important;
 }
 .lh-xs{
   line-height: 0.7rem !important;
@@ -90,16 +96,41 @@ input[type=number]::-webkit-inner-spin-button {
   appearance: none !important;
   margin: 0 !important;
 }
-.border-dash{
-  border:0 !important;
+.border-web-b-dash{
+  border-bottom: 2px dashed rgb(233, 233, 233) !important;
+}
+.border-web-t-dash{
+  border-top: 2px dashed rgb(233, 233, 233) !important;
 
+}
+
+.border-web-r-dash{
+  border-right: 2px dashed rgb(233, 233, 233) !important;
+
+}
+
+.border-web-l-dash{
+  border-left: 2px dashed rgb(233, 233, 233) !important;
+
+}
+
+.border-b-dash,.border-t-dash,.border-r-dash,.border-l-dash{
+  border:0 !important;
 }
 @media only screen and (max-width: 600px) {
   body{
     background-color: rgb(241, 241, 241);
   }
-  .border-dash{
+  .border-b-dash{
+    border-bottom: 2px dashed rgb(233, 233, 233) !important;
+  }
+  .border-t-dash{
     border-top: 2px dashed rgb(233, 233, 233) !important;
-
+  }
+  .border-r-dash{
+    border-right: 2px dashed rgb(233, 233, 233) !important;
+  }
+  .border-l-dash{
+    border-left: 2px dashed rgb(233, 233, 233) !important;
   }
 }

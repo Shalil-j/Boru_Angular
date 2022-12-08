@@ -47,6 +47,13 @@ html {
 .pre-loader img{
   height: 7rem;
 }
+.welcome-form-input{
+  border: 1px solid rgba(209, 209, 209, 0.874) !important;
+}
+.welcome-form-input:focus-within{
+  border: 2px solid #0D6EFD !important;
+}
+
 @media only screen and (max-width: 600px){
 #login-form,.step{
   height: 90vh;

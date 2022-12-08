@@ -18,6 +18,7 @@ import { OrdersComponent } from './page-component/orders/orders.component';
 import { SearchResultsComponent } from './page-component/search-results/search-results.component';
 import { ManageAddComponent } from './components/address/manage-add/manage-add.component';
 import { AddAddressComponent } from './components/address/add-address/add-address.component';
+import { OrderBillSummeryComponent } from './components/order-bill-summery/order-bill-summery.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,7 @@ const routes: Routes = [
       { path: 'subscribed-products', component: SubscribedProductsComponent },
       { path: 'search', component: SearchResultsComponent },
       {
-        path: 'profile', component: ProfileComponent, data:{title: 'Profile'},
+        path: 'profile', component: ProfileComponent, data: { title: 'Profile' },
         children: [
           { path: '', component: ShopComponentComponent },
           { path: 'manage-address', component: ManageAddComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'add-address', component: AddAddressComponent },
+  { path: 'order-bill-summery', component: OrderBillSummeryComponent },
 
 
 ];

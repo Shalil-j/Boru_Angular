@@ -7,6 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddAddressComponent implements OnInit {
 
+
+  steponeform=false;
+  steptowform=true;
+
+  stepOne(){
+    this.steponeform=!this.steponeform;
+    this.steptowform=!this.steptowform;
+  }
+  stepTwo(){
+    this.steponeform=!this.steponeform;
+    this.steptowform=!this.steptowform;
+    console.log('working...');
+  }
+
+
+
   constructor() { }
 
   ngOnInit(): void {

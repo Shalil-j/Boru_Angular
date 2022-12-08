@@ -36,6 +36,7 @@ import { OrdersComponent } from './page-component/orders/orders.component';
 import { ManageAddComponent } from './components/address/manage-add/manage-add.component';
 import { AddAddressComponent } from './components/address/add-address/add-address.component';
 import { PreviousTabNavbarComponent } from './components/previous-tab-navbar/previous-tab-navbar.component';
+import { OrderBillSummeryComponent } from './components/order-bill-summery/order-bill-summery.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,8 @@ import { PreviousTabNavbarComponent } from './components/previous-tab-navbar/pre
     OrdersComponent,
     ManageAddComponent,
     AddAddressComponent,
-    PreviousTabNavbarComponent
+    PreviousTabNavbarComponent,
+    OrderBillSummeryComponent
   ],
   imports: [
     BrowserModule,
