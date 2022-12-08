@@ -1,0 +1,116 @@
+<app-previous-tab-navbar></app-previous-tab-navbar>
+<div class="bill-summery py-4 container bg-white">
+  <div
+    class="col-lg-5 d-flex justify-content-center mx-auto gap-3 gap-md-5 align-items-center"
+  >
+    <div class="text-center">
+      <h5 class="fs-4">Shubham Store, sector - 14 Vashi</h5>
+      <p class="fw-light">Vashi, Navi Mumbai, 400703...</p>
+    </div>
+    <div>
+      <a href="tel:0000000000"><i class="bi bi-telephone-fill fs-3"></i></a>
+    </div>
+  </div>
+  <!--  -->
+  <div class="row mt-5">
+    <div class="col-12 col-md-6 border-end border-2">
+      <p class="fs-5">
+        Shubham Bhujbal (<a
+          class="text-decoration-none"
+          href="tel:+91 9594710974"
+          >+91 9594710974</a
+        >)
+      </p>
+      <div
+        class="d-flex gap-4 mt-3 col-lg-10 border border-primary rounded p-3"
+      >
+        <div>
+          <img
+            class="md-icon"
+            src="../../../assets/asserts/icons and vectors/Home customer.svg"
+            alt=""
+          />
+        </div>
+        <div>
+          <p class="mb-2 fw-semibold">Home</p>
+          <p>B-11/ room no 14</p>
+          <p class="text-xs">
+            Siddhivinayak CHS CA 95673 Evergreen Rd. Evergreen Rd … 497
+            Evergreen Rd. Roseville, 497
+          </p>
+        </div>
+      </div>
+      <!--  -->
+      <div class="mt-5">
+        <ul class="delivery-status p-2 pe-lg-5">
+          <li class="d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-4 align-items-center">
+              <span><i class="bi bi-check-circle-fill fs-3 text-primary"></i></span>
+              <img class="lg-icon" src="../../../assets/asserts/icons and vectors/Order sent Customer.svg" alt="">
+              <p>Order sent to Shop</p>
+            </div>
+            <div><p>10:00 AM</p></div>
+          </li>
+          <!--  -->
+          <li class="d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-4 align-items-center">
+              <span><i class="bi bi-x-circle-fill fs-3 text-danger"></i></span>
+              <img class="lg-icon" src="../../../assets/asserts/icons and vectors/Shop order accept.svg" alt="">
+              <p>Order sent to Shop</p>
+            </div>
+            <div><p>10:00 AM</p></div>
+          </li>
+          <!--  -->
+          <li class="d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-4 align-items-center">
+              <span><i class="bi bi-check-circle-fill fs-3 text-primary"></i></span>
+              <img class="lg-icon" src="../../../assets/asserts/icons and vectors/Order delivered.svg" alt="">
+              <p>Order sent to Shop</p>
+            </div>
+            <div><p>10:00 AM</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- bill -->
+    <div class="col-12 col-md-6 ps-md-5 px-3">
+      <div class="bill border-web-b-dash">
+        <div class="bill-list pe-3">
+          <!--  -->
+          <div class="w-100 border-b-dash py-3" *ngFor="let items of bill_summary">
+            <h5 class="text-truncate ">{{items.product_name}}</h5>
+            <p class="text-muted">{{items.qty}}</p>
+            <div class="d-flex justify-content-between fw-light">
+            <p>₹ <span>{{items.amount}}</span> X <span>{{items.item}}</span></p>
+            <p class="fw-bold">₹ <span>{{items.total_amount}}</span></p>
+          </div>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+    <!--  -->
+    <div class="my-3 px-3">
+      <div class="d-flex justify-content-between py-1">
+        <p>Item total</p>
+        <p>₹ <span>1680</span></p>
+      </div>
+      <div class="d-flex justify-content-between py-1">
+        <p>Tax</p>
+        <p>₹ <span>140</span></p>
+      </div>
+      <div class="d-flex justify-content-between py-1">
+        <p>Delivery charges</p>
+        <p>₹ <span>30</span></p>
+      </div>
+    </div>
+    <!--  -->
+    <div class="d-flex justify-content-between border-top border-bottom border-2 p-3">
+      <p class="fw-bold fs-4">Grand Total</p>
+      <p class="fs-5">₹ <span>1950</span></p>
+    </div>
+  </div>
+</div>
+</div>
+
+<app-footer></app-footer>
+<app-mobile-menu></app-mobile-menu>
