@@ -1,18 +1,21 @@
     <!-- profile -->
-    <div class="d-flex justify-content-between p-3 rounded  bg-light">
-      <div class="d-flex flex-column justify-content-between ps-3">
+    <div class="col-10 flex-grow-1 d-flex   p-3 rounded  bg-light">
+        <div>
+        <div class="profile-img">
+            <img src="https://images.unsplash.com/photo-1564564244660-5d73c057f2d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80" alt="">
+            <button id="change-profile-img-btn" class="border-0 text-white fs-3" routerLink="/edit-profile"><i class="bi bi-pencil-fill"></i></button>
+            </div>
+        </div>
+      <div class="w-100 d-flex flex-column justify-content-between ps-3">
           <div>
               <p class="fs-4 fw-semibold">Shubham Bhujbal</p>
               <p class="mt-2 text-secondary">+91 9594710974</p>
           </div>
-          <div>
-              <button class="btn btn-outline-secondary"><i class="bi bi-pencil me-2"></i>Edit</button>
+          <div class="d-flex justify-content-end ">
+              <button class="btn " routerLink="/edit-profile">Edit<i class="bi bi-pencil ms-2"></i></button>
           </div>
       </div>
-      <div class="profile-img">
-          <img src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80" alt="">
-          <button id="change-profile-img-btn" class="bg-transparent border-0 text-white fs-3"><i class="bi bi-pencil-fill"></i></button>
-          </div>
+
   </div>
   <!-- profile -->
     <!-- profile setting -->

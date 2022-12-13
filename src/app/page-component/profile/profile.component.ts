@@ -10,7 +10,10 @@ import { Title } from '@angular/platform-browser';
 export class ProfileComponent implements OnInit {
   Title = 'angulartitle';
 
-  constructor() { }
+  constructor(
+    // private router: Router,
+    private titleService: Title
+  ) { }
 
   ngOnInit(): void {
     // const appTitle = this.titleService.getTitle();

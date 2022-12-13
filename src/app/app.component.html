@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div class="loading-overlay" *ngIf="loading">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+      <span class="loader"></span>
+    </div>
+</div>
+  <router-outlet></router-outlet>

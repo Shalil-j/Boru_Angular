@@ -1,7 +1,8 @@
 .profile-img{
-  height: 15rem;
-  width: 15rem;
+  height: 12rem !important;
+  width: 12rem !important;
   position: relative;
+  overflow: hidden;
 }
 .profile-img img{
   width: 100%;
@@ -12,22 +13,12 @@
 }
 .profile-img button{
   position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%,-50%);
+  bottom: 2px;
+  right: 2px;
   transition:all 0.5s ease-in-out;
-  display: none;
-}
-.profile-img img:hover{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 3rem;
+  height: 3rem;
+  background: rgba(0, 0, 0, 0.358) !important;
   border-radius: 1rem;
-  filter: brightness(50%);
 }
-.profile-img img:hover + #change-profile-img-btn{
-  display: block;
-}
-.profile-setting-btn.active{
-  color: #2C7BE5 ;
-}
+

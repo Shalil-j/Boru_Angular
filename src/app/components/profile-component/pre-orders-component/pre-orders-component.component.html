@@ -6,6 +6,16 @@
   </div>
   <div class="d-flex flex-column justify-content-between">
       <p class="text-end">₹ <span>{{items.amount}}</span></p>
-      <p><img class="sm-icon me-2" src="../../../../assets/asserts/icons and vectors/Done_Successful.svg" alt="">Deliverd</p>
+      <!--  -->
+      <div class="" *ngIf="items.status == 'delivered' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Done_Successful.svg" alt=""> Delivered</p>
+      </div>
+      <div class="" *ngIf="items.status == 'cancelled' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Cancel.svg" alt=""> Cancelled</p>
+      </div>
+      <div class="" *ngIf="items.status == 'rejected' ">
+        <p><img class="sm-icon" src="../../../assets/asserts/icons and vectors/Reject.svg" alt=""> Rejected</p>
+      </div>
+      <!--  -->
   </div>
 </div>

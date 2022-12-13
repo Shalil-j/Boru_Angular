@@ -1,0 +1,21 @@
+.bill{
+    cursor: pointer;
+}
+.bill:hover{
+    background-color: rgb(245, 245, 245);
+}
+#subscription-bill{
+    position: sticky;
+    top: 1rem;
+    background: white;
+}
+.bill-div{
+    position: relative;
+    height: 40rem;
+    overflow: hidden;
+}
+.bill-data{
+    position: relative;
+    overflow-y: auto !important;
+    height: 100%;
+}

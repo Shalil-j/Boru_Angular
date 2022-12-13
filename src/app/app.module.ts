@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserModule , Title } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,9 @@ import { ManageAddComponent } from './components/address/manage-add/manage-add.c
 import { AddAddressComponent } from './components/address/add-address/add-address.component';
 import { PreviousTabNavbarComponent } from './components/previous-tab-navbar/previous-tab-navbar.component';
 import { OrderBillSummeryComponent } from './components/order-bill-summery/order-bill-summery.component';
+import { SubsBillSummeryComponent } from './components/subs-bill-summery/subs-bill-summery.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { DateWiseDiscriptionComponent } from './components/subs-bill-summery/date-wise-discription/date-wise-discription.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,13 +75,17 @@ import { OrderBillSummeryComponent } from './components/order-bill-summery/order
     ManageAddComponent,
     AddAddressComponent,
     PreviousTabNavbarComponent,
-    OrderBillSummeryComponent
+    OrderBillSummeryComponent,
+    SubsBillSummeryComponent,
+    EditProfileComponent,
+    DateWiseDiscriptionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
+    CalendarModule,
   ],
   providers: [
     Title

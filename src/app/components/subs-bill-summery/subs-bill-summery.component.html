@@ -1,0 +1,57 @@
+<app-previous-tab-navbar></app-previous-tab-navbar>
+<div class="container">
+    <div class="row my-5">
+      <div class="col-4 border-end">
+          <app-subs-bills-component></app-subs-bills-component>
+        </div>
+        <div class="col-8  h-100 px-4">
+            <div class="text-center pb-3 border-web-b-dash">
+                <h5 class="mb-2">Shubham Store, sector - 14 Vashi</h5>
+                <a class="text-decoration-none mt-3" href="tel:+91598484165"><i class="bi bi-telephone-fill"></i> +91 9985674926 </a>
+            </div>
+            <div class="text-center py-3 border-web-b-dash">
+                <p>August 2021</p>
+                <p><span>01/08/2021</span> - <span>31/08/2021</span></p>
+                <a class="text-xs" routerLink="/Date-wise-discription">Date wise discription </a>
+            </div>
+            <!--  -->
+            <div class="border-web-b-dash">
+                <div class="pt-3" *ngFor="let items of bill">
+                    <p>{{items.product_name}}</p>
+                    <div class="d-flex justify-content-between">
+                        <p><span>{{items.product_qty}}</span> ₹<span>{{items.price}}</span> X QTY <span>{{items.qty}}</span></p>
+                        <p>₹ <span>{{items.total}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- ********** -->
+            <div class="col-6 float-end">
+                <div class="d-flex justify-content-between pt-3 ">
+                    <p>Item total</p>
+                    <p>₹ <span>4442.00</span></p>
+                </div>
+                <div class="d-flex justify-content-between pt-3 border-web-b-dash">
+                    <p>Item total</p>
+                    <p>₹ <span>156.00</span></p>
+                </div>
+                <div class="fw-semibold d-flex justify-content-between py-3 border-web-b-dash">
+                    <p>Grand total</p>
+                    <p>₹ <span>4442.00</span></p>
+                </div>
+                <div class="d-flex justify-content-between pt-3 ">
+                    <p>Total received</p>
+                    <p>₹ <span>442.00</span></p>
+                </div>
+                <div class="d-flex justify-content-between pt-3">
+                    <p>Balance</p>
+                    <p>₹ <span>1236</span></p>
+                </div>
+
+
+            </div>
+            <!--  -->
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+<app-mobile-menu></app-mobile-menu>

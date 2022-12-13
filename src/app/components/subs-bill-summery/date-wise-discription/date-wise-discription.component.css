@@ -1,0 +1,65 @@
+.e-calendar .e-content td.e-selected span.e-day, .e-bigger.e-small .e-calendar .e-content td.e-selected span.e-day{
+    background: rgb(232, 246, 255) !important;
+    border: 1px solid #1298ff !important;
+    box-shadow: none !important;
+    color: #1298ff !important;
+}
+
+.ui-datepicker-header{
+    background-color: #2196f3;
+    color:white;
+    text-align:center;
+    font-family:'Roboto';
+    padding:10px;
+    height:40px;
+    border-radius:8px 8px 0px 0px;
+  }
+
+  .ui-datepicker-prev span,
+  .ui-datepicker-next span{
+    display:none;
+  }
+
+  .ui-datepicker-prev:after{
+    content:"<";
+    font-size:2rem;
+    float:left;
+    margin-left:10px;
+    cursor:pointer;
+  }
+
+
+  .ui-datepicker-next:after{
+    content:">";
+    float:right;
+    font-size:2rem;
+    margin-right:10px;
+    cursor:pointer;
+  }
+  .ui-datepicker-calendar th{
+    padding:10px;
+    color:#2196f3;
+  }
+
+  .ui-datepicker-calendar {
+      text-align:center;
+      margin:0 auto;
+      padding:8px;
+  }
+
+  .ui-datepicker-title{
+    padding:10px;
+  }
+
+  .ui-datepicker-calendar td {
+    padding:4px 0px;
+  }
+
+  .ui-datepicker-calendar .ui-state-default {
+    text-decoration:none;
+    color:black;
+  }
+
+  .ui-datepicker-calendar .ui-state-active {
+      color: #2196f3;
+  }
