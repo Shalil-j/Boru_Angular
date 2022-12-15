@@ -20,8 +20,9 @@ import { ManageAddComponent } from './components/address/manage-add/manage-add.c
 import { AddAddressComponent } from './components/address/add-address/add-address.component';
 import { OrderBillSummeryComponent } from './components/order-bill-summery/order-bill-summery.component';
 import { SubsBillSummeryComponent } from './components/subs-bill-summery/subs-bill-summery.component';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { EditProfileComponent } from './components/profile-component/edit-profile/edit-profile.component';
 import { DateWiseDiscriptionComponent } from './components/subs-bill-summery/date-wise-discription/date-wise-discription.component';
+import { CheckoutpageComponent } from './pages/checkoutpage/checkoutpage.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,7 @@ const routes: Routes = [
   { path: 'subs-bill-summery', component:SubsBillSummeryComponent },
   { path: 'Date-wise-discription', component:DateWiseDiscriptionComponent },
   { path: 'edit-profile', component:EditProfileComponent },
+  { path: 'place-order', component:CheckoutpageComponent },
 
 
 ];

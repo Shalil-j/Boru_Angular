@@ -16,9 +16,9 @@
           <div class="product-menu-mobile ">
             <div class="d-flex align-items-center gap-4 py-2">
               <button class="bg-transparent text-nowrap active-mobile-menu">All</button>
-              <div class="d-flex align-items-center gap-4 py-2" *ngFor="let menu_items of product_service_available">
+              <ng-template *ngFor="let menu_items of product_service_available">
               <button class="bg-transparent text-nowrap text-capitalize">{{menu_items}}</button>
-            </div>
+            </ng-template>
           </div>
           </div>
         </div>
@@ -31,16 +31,16 @@
         </div>
        <!--  -->
        <div class="product p-3 border-bottom bg-white" *ngFor="let items of product_list ">
-        <div class="d-flex ">
-          <div class="product-img">
+        <div class="d-flex gap-2">
+          <div class="col-3 bg-black product-img">
             <img class="img-contain" src="{{items.product_img}}" alt="">
           </div>
-          <div class="product-detail w-100 ms-4 d-flex flex-column justify-content-between">
+          <div class="col-9 product-detail   d-flex flex-column justify-content-between">
               <div>
-                <h4 class="text-capitalize">{{items.product_name}}</h4>
+                <h4 class="text-capitalize text-truncate">{{items.product_name}}</h4>
                 <p class="fw-light text-xs">(<span>{{items.product_quantity}}</span> <span>{{items.measure_unit}}</span>)</p>
               </div>
-              <div class="d-flex justify-content-between align-items-center w-100">
+              <div class="d-flex justify-content-between align-items-center">
                 <div class=" fs-5">₹ <span>{{items.product_price}}</span></div>
                 <div class="d-flex">
                   <div  id="quantity-btn" class="btn-group product-quantity d-none " role="group" aria-label="Basic example">

@@ -39,7 +39,7 @@ import { AddAddressComponent } from './components/address/add-address/add-addres
 import { PreviousTabNavbarComponent } from './components/previous-tab-navbar/previous-tab-navbar.component';
 import { OrderBillSummeryComponent } from './components/order-bill-summery/order-bill-summery.component';
 import { SubsBillSummeryComponent } from './components/subs-bill-summery/subs-bill-summery.component';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { EditProfileComponent } from './components/profile-component/edit-profile/edit-profile.component';
 import { DateWiseDiscriptionComponent } from './components/subs-bill-summery/date-wise-discription/date-wise-discription.component';
 @NgModule({
   declarations: [

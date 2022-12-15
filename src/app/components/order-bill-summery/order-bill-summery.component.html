@@ -1,9 +1,9 @@
 <app-previous-tab-navbar></app-previous-tab-navbar>
-<div class="bill-summery py-4 container bg-white">
+<div class="bill-summery py-4 px-0 px-md-3 container-md">
   <div
-    class="col-lg-5 d-flex justify-content-center mx-auto gap-3 gap-md-5 align-items-center"
+    class="p-3 p-md-0 bg-white border-b-dash col-lg-5 d-flex justify-content-between justify-content-md-center mx-auto gap-3 gap-md-5 align-items-center"
   >
-    <div class="text-center">
+    <div class="text-md-center">
       <h5 class="fs-4">Shubham Store, sector - 14 Vashi</h5>
       <p class="fw-light">Vashi, Navi Mumbai, 400703...</p>
     </div>
@@ -12,9 +12,9 @@
     </div>
   </div>
   <!--  -->
-  <div class="row mt-5">
-    <div class="col-12 col-md-6 border-end border-2">
-      <p class="fs-5">
+  <div class="row  mt-md-5 m-0">
+    <div class="col-12 bg-white p-3 p-md-0  col-md-6 border-end border-2">
+      <p class="fs-5 d-none d-md-block">
         Shubham Bhujbal (<a
           class="text-decoration-none"
           href="tel:+91 9594710974"
@@ -41,44 +41,71 @@
         </div>
       </div>
       <!--  -->
-      <div class="mt-5">
-        <ul class="delivery-status p-2 pe-lg-5">
-          <li class="d-flex justify-content-between align-items-center">
-            <div class="d-flex gap-4 align-items-center">
-              <span><i class="bi bi-check-circle-fill fs-3 text-primary"></i></span>
+      <div class="mt-5 bg-white">
+        <ul class="delivery-status p-md-2 pe-lg-5">
+          <li class="d-flex justify-content-between align-items-center" *ngFor="let items of ordertoshop">
+            <div class="d-flex gap-4 align-items-center" [ngClass]="{'no-response':items.status === 'no-response'}">
+              <!--  -->
+              <span class="material-symbols-outlined " [ngClass]="{'order-status-done':items.status === 'done','order-status-cancel':items.status === 'canceled','':items.status === 'no-response'} ">
+                <ng-template [ngIf]="items.status == 'done'">done</ng-template>
+                <ng-template [ngIf]="items.status == 'canceled'">close</ng-template>
+                <ng-template [ngIf]="items.status == 'no-response'">radio_button_unchecked</ng-template>
+                </span>
+                <!--  -->
               <img class="lg-icon" src="../../../assets/asserts/icons and vectors/Order sent Customer.svg" alt="">
+              <div>
               <p>Order sent to Shop</p>
+              <p class="text-xs text-wrap w-75 fw-light" *ngIf="items.status == 'no-response'">Order successfully sended to the shop</p>
             </div>
-            <div><p>10:00 AM</p></div>
+            </div>
+            <div *ngIf="items.status != 'no-response'"><p class="text-nowrap">{{items.timing}}</p></div>
           </li>
           <!--  -->
-          <li class="d-flex justify-content-between align-items-center">
-            <div class="d-flex gap-4 align-items-center">
-              <span><i class="bi bi-x-circle-fill fs-3 text-danger"></i></span>
+          <li class="d-flex justify-content-between align-items-center" *ngFor="let items of orderaccepted">
+            <div class="d-flex gap-4 align-items-center" [ngClass]="{'no-response':items.status === 'no-response'}">
+              <!--  -->
+              <span class="material-symbols-outlined " [ngClass]="{'order-status-done':items.status === 'done','order-status-cancel':items.status === 'canceled','':items.status === 'no-response'} ">
+                <ng-template [ngIf]="items.status == 'done'">done</ng-template>
+                <ng-template [ngIf]="items.status == 'canceled'">close</ng-template>
+                <ng-template [ngIf]="items.status == 'no-response'">radio_button_unchecked</ng-template>
+                </span>
+                <!--  -->
               <img class="lg-icon" src="../../../assets/asserts/icons and vectors/Shop order accept.svg" alt="">
-              <p>Order sent to Shop</p>
+              <div>
+                <p>Shop accepted Order</p>
+                <p class="text-xs text-wrap w-75 fw-light"*ngIf="items.status == 'no-response'">Shop will accept order once Product & Delivery person is available</p>
             </div>
-            <div><p>10:00 AM</p></div>
+            </div>
+            <div *ngIf="items.status != 'no-response'"><p class="text-nowrap">{{items.timing}}</p></div>
           </li>
           <!--  -->
-          <li class="d-flex justify-content-between align-items-center">
-            <div class="d-flex gap-4 align-items-center">
-              <span><i class="bi bi-check-circle-fill fs-3 text-primary"></i></span>
+          <li class="d-flex justify-content-between align-items-center" *ngFor="let items of orderdelivered">
+            <div class="d-flex gap-4 align-items-center" [ngClass]="{'no-response':items.status === 'no-response'}">
+               <!--  -->
+               <span class="material-symbols-outlined " [ngClass]="{'order-status-done':items.status === 'done','order-status-cancel':items.status === 'canceled','':items.status === 'no-response'} ">
+                <ng-template [ngIf]="items.status == 'done'">done</ng-template>
+                <ng-template [ngIf]="items.status == 'canceled'">close</ng-template>
+                <ng-template [ngIf]="items.status == 'no-response'">radio_button_unchecked</ng-template>
+                </span>
+                <!--  -->
               <img class="lg-icon" src="../../../assets/asserts/icons and vectors/Order delivered.svg" alt="">
-              <p>Order sent to Shop</p>
+              <div>
+                <p>Order Deliverd</p>
+                <p class="text-xs text-wrap w-75 fw-light" *ngIf="items.status == 'no-response'">The shop will deliver the order once packed. delivery time depends on the shop</p>
             </div>
-            <div><p>10:00 AM</p></div>
+            </div>
+            <div *ngIf="items.status != 'no-response'"><p class="text-nowrap">{{items.timing}}</p></div>
           </li>
         </ul>
       </div>
     </div>
     <!-- bill -->
-    <div class="col-12 col-md-6 ps-md-5 px-3">
+    <div class="col-12 col-md-6 ps-md-5 px-3 bg-white mt-3 mt-md-0">
       <div class="bill border-web-b-dash">
-        <div class="bill-list pe-3 hide-scrollbar">
+        <div class="bill-list pe-md-3 hide-scrollbar">
           <!--  -->
           <div class="w-100 border-b-dash py-3" *ngFor="let items of bill_summary">
-            <h5 class="text-truncate ">{{items.product_name}}</h5>
+            <h5 class="text-truncate fw-normal">{{items.product_name}}</h5>
             <p class="text-muted">{{items.qty}}</p>
             <div class="d-flex justify-content-between fw-light">
             <p>₹ <span>{{items.amount}}</span> X <span>{{items.item}}</span></p>
@@ -89,7 +116,7 @@
       </div>
     </div>
     <!--  -->
-    <div class="my-3 px-3">
+    <div class="my-3 px-md-3">
       <div class="d-flex justify-content-between py-1">
         <p>Item total</p>
         <p>₹ <span>1680</span></p>
@@ -104,7 +131,7 @@
       </div>
     </div>
     <!--  -->
-    <div class="d-flex justify-content-between border-top border-bottom border-2 p-3">
+    <div class="d-flex justify-content-between border-top border-bottom border-2 py-3 p-md-3 mb-3">
       <p class="fw-bold fs-4">Grand Total</p>
       <p class="fs-5">₹ <span>1950</span></p>
     </div>
