@@ -78,3 +78,25 @@ display: none;
   border: 1px solid #2699FB;
   height: 2rem;
 }
+.subs-icon{
+  background-color: #d5ebff;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 1rem;
+}
+.not-available{
+  filter: grayscale(1);
+}
+@media only screen and (max-width: 600px) {
+  .product-img{
+    height: 5rem;
+    width: 5rem;
+    /* padding: 5px; */
+  }
+}

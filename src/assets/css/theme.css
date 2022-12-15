@@ -120,6 +120,9 @@ input[type="number"]::-webkit-inner-spin-button {
   border-left: 2px dashed rgb(233, 233, 233) !important;
 }
 
+.text-orange{
+  color: orange;
+}
 .border-b-dash,
 .border-t-dash,
 .border-r-dash,

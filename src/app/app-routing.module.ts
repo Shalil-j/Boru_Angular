@@ -51,9 +51,10 @@ const routes: Routes = [
   {
     path: 'store', component: StorepageComponent,
     children: [
-      { path: '', component: ProductlistComponentComponent },
+      // { path: '', component: ProductlistComponentComponent },
+      { path: '', component: BillsHistoryComponent },
       { path: 'subscribed-products', component: SubscribedProductsComponent },
-      { path: 'bill-history', component: BillsHistoryComponent },
+      // { path: 'bill-history', component: BillsHistoryComponent },
       { path: 'product', component: ProductComponent },
     ]
   },
