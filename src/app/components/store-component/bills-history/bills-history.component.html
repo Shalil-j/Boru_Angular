@@ -1,8 +1,8 @@
-<div class="py-5">
+<div class="mt-2 mb-4">
 
-  <div class=" col-md-10 mx-auto ">
+  <div class=" col-md-8 mx-auto ">
 
-    <div class="bill border-bottom  p-3" *ngFor="let bills of bill">
+    <!-- <div class="bill border-bottom  p-3" *ngFor="let bills of bill">
     <h5><span>{{bills.month}}</span> <span></span></h5>
     <div class="d-flex mt-1">
       <div class="col-4">
@@ -16,6 +16,24 @@
           <p class="text-capitalize" [ngClass]="{'text-orange':bills.status == 'unpaid'}">{{bills.status}}</p>
       </div>
     </div>
+  </div> -->
+  <div class="d-flex gap-3 align-items-end justify-content-between bill border-bottom bg-white p-3" *ngFor="let bills of bill">
+    <div class="d-md-flex align-items-end justify-content-between col-6">
+      <div>
+      <h5 class="text-capitalize">{{bills.month}}</h5>
+      <p class="text-xs mt-2">{{bills.date}}</p>
+    </div>
+    <div>
+      <p>QTY : <span>{{bills.qty}}</span></p>
+    </div>
+    </div>
+    <!--  -->
+    <div class="text-end d-md-flex align-items-end justify-content-between col-6">
+      <p class="d-md-none text-capitalize" [ngClass]="{'text-orange':bills.status == 'unpaid'}">{{bills.status}}</p>
+      <p>Amount : ₹ <span>{{bills.amount}}</span></p>
+      <p class="d-none d-md-block text-capitalize" [ngClass]="{'text-orange':bills.status == 'unpaid'}">{{bills.status}}</p>
+    </div>
+
   </div>
 
 

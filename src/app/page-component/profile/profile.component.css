@@ -21,4 +21,17 @@
   background: rgba(0, 0, 0, 0.358) !important;
   border-radius: 1rem;
 }
-
+.page-link.active{
+  color: rgb(0, 153, 255);
+}
+.content-wrapper{
+  overflow: hidden;
+  height: 45rem;
+  position: sticky !important;
+  top: 7rem;
+}
+.content{
+  height: 45rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

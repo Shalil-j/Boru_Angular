@@ -1,5 +1,5 @@
 <!-- products -->
-<div class="pt-md-5 position-relative products-div">
+<div class="pt-md-5 position-relative products-div container">
   <div class="row">
     <div class="col-3 d-none d-md-inline-block">
       <!-- product menu for web -->
@@ -20,24 +20,23 @@
           <button class="bg-transparent text-nowrap active-mobile-menu">
             All
           </button>
-          <ng-template *ngFor="let menu_items of product_service_available">
-            <button class="bg-transparent text-nowrap text-capitalize">
+            <button class="bg-transparent text-nowrap text-capitalize" *ngFor="let menu_items of product_service_available" >
               {{ menu_items }}
             </button>
-          </ng-template>
         </div>
       </div>
     </div>
     <!-- product menu for mobile -->
     <div class="col-12 col-md-8 p-0 px-md-5">
       <!-- search box -->
+      <div class="px-2">
       <div class="input-group focus-input px-2 my-3 border rounded-3 bg-light d-md-none">
         <input type="text" class="form-control bg-transparent border-0"
           placeholder="Search Product from Shubham Store, sector-14... " aria-label="Recipient's username"
           aria-describedby="basic-addon2" />
         <span class="input-group-text bg-transparent border-0" id="basic-addon2"><i
             class="bi bi-search text-secondary fs-5"></i></span>
-      </div>
+      </div></div>
       <!--  -->
       <div class="product p-3 border-bottom bg-white" *ngFor="let items of product_list">
         <div class="d-flex gap-2">
