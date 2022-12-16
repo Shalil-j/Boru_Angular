@@ -30,7 +30,7 @@ const routes: Routes = [
     path: '', component: HomepageComponent
     , children: [
       { path: '', component: HomepageComponentComponent },
-      { path: 'Store_list', component: StoresComponent },
+      { path: 'store_list', component: StoresComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'subscribed-products', component: SubscribedProductsComponent },
       { path: 'search', component: SearchResultsComponent },
