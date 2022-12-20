@@ -10,7 +10,7 @@
     </a>
   </div>
 
-  <div class="login-div">
+  <div class="login-div bg-white">
     <div class="row justify-content-center align-items-center ">
       <div class="col-12 col-xl-9 login">
         <div class="row  mt-5 ">
@@ -95,9 +95,10 @@
           </div>
           <!-- steps for mobile -->
           <!--logig form -->
-          <div id="login-form" class="col-12 col-lg-5 col-xl-4 px-5 d-none d-md-block">
+          <div id="login-form" class="col-12 col-lg-5 col-xl-4 px-5 d-none  d-md-block py-3">
           <!-- mobile-login -->
-          <div  id="mobile-login" class="h-100">
+          <form *ngIf="mobilelogin" id="mobile-login" class="h-100" >
+          <div   class="h-100">
             <div  class="d-flex flex-column justify-content-between  h-100">
               <div class="">
                 <a routerLink="/">
@@ -106,41 +107,39 @@
               </div>
               <!--  -->
               <div class="">
-                <p class="fs-4 fw-bold text-center">Welcome</p>
-              <div class="input-group welcome-form-input mb-3 mt-3 rounded">
-                <input type="tel" class="form-control border-0" placeholder="Phone No." aria-label="Username"
-                  aria-describedby="basic-addon1">
-                <span class="input-group-text bg-white border-0 text-secondary py-2" id="basic-addon1"><i
+              <p class="fs-4 fw-bold text-center">Welcome</p>
+              <div class="input-group focus-input border  p-0  mt-3 rounded" id="mobileDiv">
+                <input type="text" class="form-control border-0 " value="7878787877" id="mobileField"  (keyup)="validateMobile($event)" placeholder="Phone No."  maxlength="10" minlength="10">
+                <span class="input-group-text bg-white border-0 text-secondary py-2" style="color: rgb(182, 182, 182) !important;"><i
                     class="bi bi-phone-fill"></i></span>
               </div>
-              <div class="input-group mb-3 welcome-form-input rounded">
-                <input #otp (onChange)="showopticon()" id="otp" type="password" class="form-control border-0 py-2" placeholder="OTP - xxxx"
-                  aria-label="Username" aria-describedby="basic-addon1"
-                  onchange="$('#show-otp').addClass('text-primary').removeClass('text-secondary');
-                  "
-                  >
-                <div *ngIf="!isOTPnull" class="otp-btn input-group-text bg-white  border-0 text-secondary">
-                  <button id="show-otp" class="bg-transparent text-secondary border-0">
-                    <i class="bi bi-eye-fill fs-5 "></i>
-                  </button>
-                  <button id="hide-otp" class="d-none text-secondary bg-transparent border-0">
-                    <i class="bi bi-eye-slash-fill  fs-5"></i>
+              <p class="text-xs text-danger pt-1" *ngIf="mobileError">{{displayMsg}}</p>
+
+              <div *ngIf="otpDiv">
+              <div id="otpDiv" class="input-group mt-3 focus-input border rounded " >
+                <input minlength="6" maxlength="6" id="otpField" type="password" (keyup)="validateOTP($event)" class="bg-transparent form-control border-0 py-2" placeholder="OTP - xxxxxx">
+                <div class="otp-btn input-group-text bg-white  border-0 d-none" >
+                  <button id="show-otp" (click)="toogleOTP()" class="bg-transparent  border-0" style="color: rgb(182, 182, 182);">
+                    <i id="otp-icon" class="bi bi-eye-fill"></i>
                   </button>
                 </div>
               </div>
-              <button class="bg-transparent border-0 text-primary">Resend OTP</button>
-            </div>
-            <!--  -->
-            <div>
-              <button class=" btn btn-primary login-btn w-100">login</button>
-              <button id="show-personal-info" class="text-xs text-primary border-0 bg-transparent">personal
-                info</button>
+              <p class="text-xs text-danger pt-1" *ngIf="otpError">{{displayMsg}}</p>
+              <button id="resendOTP" class="bg-transparent border-0 text-primary mt-3">Resend OTP</button>
             </div>
           </div>
-        </div>
+            <!--  -->
+            <div>
+              <button class=" btn btn-inactive login-btn w-100" id="getOTPBtn" (click)="getOTP()">Get OTP</button>
+              <button class=" btn btn-inactive login-btn w-100 d-none" id="loginBtn" (click)="login()">login</button>
+              </div>
+            </div>
+          </div>
+        </form>
           <!-- mobile-login -->
           <!-- personal-info -->
-          <div id="Personal-info" class="h-100 d-none">
+          <form *ngIf="profilelogin" id="Personal-info"  class="h-100">
+          <div class="h-100">
             <div class="d-flex flex-column justify-content-between  h-100">
               <!--  -->
               <div>
@@ -148,31 +147,33 @@
               </div>
               <!-- ******** -->
               <div>
-                <div
-                class=" row w-100 justify-content-between align-items-center border m-0 position-relative py-2 rounded">
-                <input class="position-absolute bg-danger w-100 h-100 opacity-0" type="file" id="avatar" name="avatar"
-                  accept="image/png, image/jpeg">
+                <div id="selectimgDiv"
+                class=" row w-100 justify-content-between align-items-center border  m-0 position-relative py-2 rounded">
+                <input id="profile-img" (change)="checkProfileimg($event)" type="file"  accept="image/*" class="position-absolute bg-danger w-100 h-100 opacity-0" name="avatar">
                 <div class="col-9 border-end fs-5 py-2">
                   <p> Personal Detail</p>
                 </div>
-                <div class="col-3 text-center py-1"><img class="p-2" src="../../../assets/asserts/icons and vectors/Add image.svg" alt=""></div>
+                <div class="col-3 text-center py-1"><img class="lg-icon" src="../../../assets/asserts/icons and vectors/Add image.svg" alt=""></div>
               </div>
+              <p class="text-xs text-danger pt-1" *ngIf="profileimgError">{{displayMsg}}</p>
               <!-- --------- -->
               <div>
-                <input type="text" name="" class="w-100 focus-input m-0 border mt-3 p-2  rounded text-center" placeholder="Full Name">
-                <input type="email" name="" class="w-100 focus-input m-0 border mt-3 p-2 rounded  text-center" placeholder="Email">
+                <input id="fullname" type="text" (keyup)="validateName($event)" minlength="3" name="" class="w-100 text-capitalize focus-input m-0 border mt-3 p-2  rounded text-center" placeholder="Full Name">
+                <p class="text-xs text-danger pt-1" *ngIf="nameError">{{nameMsg}}</p>
+                <input id="email" type="email" (keyup)="validateEmail($event)" name="" class="w-100 focus-input m-0 border mt-3 p-2 rounded  text-center" placeholder="Email">
+                <p class="text-xs text-danger pt-1" *ngIf="emailError">{{emailMsg}}</p>
                 <div class="form-group form-check mt-3">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label text-xs ms-2" for="exampleCheck1">By clicking confirm, I accept the terms & conditions and Privacy policy.</label>
+                  <input type="checkbox" class="form-check-input " id="checkT&C" (change)="checkAllValidation($event)">
+                  <label class="form-check-label text-xs ms-2" for="checkT&C">By clicking confirm, I accept the <a href=""> terms & conditions </a>and Privacy policy.</label>
                </div>
               </div>
               </div>
               <!--***********  -->
               <div>
-                <button class=" btn btn-primary w-100 login-btn">Login</button>
-              <button id="show-mobile-login" class="text-xs text-primary border-0 bg-transparent">mobile login</button>
+                <button id="profilelogin" type="submit" class=" btn btn-inactive login-btn w-100" disabled>Login</button>
             </div></div>
               </div>
+            </form>
           <!-- personal-info -->
         </div>
       </div>

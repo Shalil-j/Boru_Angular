@@ -65,10 +65,11 @@ p {
 input:focus {
   box-shadow: none !important;
   outline: none;
+
 }
 .focus-input:focus , .focus-input:focus-within {
   outline: 2px solid #2c7be5 !important;
-  border: 0 !important;
+  border-color: transparent !important;
 }
 .lh-xs {
   line-height: 0.7rem !important;
