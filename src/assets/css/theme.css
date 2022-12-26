@@ -7,8 +7,15 @@ body {
   background-color: white;
 }
 /* scroll bar */
+/* .hide-scrollbar{
+  overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+} */
 .hide-scrollbar::-webkit-scrollbar {
   width: 0 !important;
+  display: none;
+
 }
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
@@ -61,6 +68,7 @@ p {
 }
 .logo {
   height: 3.5rem;
+  object-fit: contain;
 }
 input:focus {
   box-shadow: none !important;

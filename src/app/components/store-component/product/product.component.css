@@ -57,8 +57,6 @@
   transform: translate(50%,-50%);
   font-size: 1rem;
   color: #818181;
-
-
 }
 .day-checkbox:checked{
   background: rgb(214, 239, 255);
@@ -69,4 +67,12 @@
 }
 .day-checkbox:checked + label{
   color: #2699FB !important;
+}
+/*  */
+@media only screen and (max-width: 600px) {
+  .delivery-period{
+    overflow: hidden;
+  }
+  .delivery-period + div{
+  }
 }

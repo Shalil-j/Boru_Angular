@@ -42,6 +42,7 @@ import { OrderBillSummeryComponent } from './components/order-bill-summery/order
 import { SubsBillSummeryComponent } from './components/subs-bill-summery/subs-bill-summery.component';
 import { EditProfileComponent } from './components/profile-component/edit-profile/edit-profile.component';
 import { DateWiseDiscriptionComponent } from './components/subs-bill-summery/date-wise-discription/date-wise-discription.component';
+import { GetLocationComponent } from './components/get-location/get-location.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +81,7 @@ import { DateWiseDiscriptionComponent } from './components/subs-bill-summery/dat
     SubsBillSummeryComponent,
     EditProfileComponent,
     DateWiseDiscriptionComponent,
+    GetLocationComponent,
   ],
   imports: [
     BrowserModule,

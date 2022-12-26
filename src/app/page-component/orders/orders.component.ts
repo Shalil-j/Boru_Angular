@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-
+// orders=[
+// {shop_name:'',shop_add:'',date:'',time:'',items:'',amount:'',isSubs:null,status:''},
+// ]
 orders=[
   {shop_name:'Shubham Dairy',shop_add:'Matunga,Mumbai 400022',date:'02/09/2022',time:'08:00AM',items:'2',amount:'1200',isSubs:false,status:'sended'},
   {shop_name:'Amul Dairy',shop_add:'Sion,Mumbai 400 042',date:'15/08/2022',time:'09:30AM',items:'',amount:'120',isSubs:true,status:'sended'},

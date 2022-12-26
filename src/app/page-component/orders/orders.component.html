@@ -1,5 +1,9 @@
 <div class="container-md bg-white" >
 <!--  -->
+<div *ngIf="orders.length === 0">
+  <img src="../../../assets/asserts/icons and vectors/Empty cart.svg" alt="">
+</div>
+<div *ngIf="orders.length >= 1 ">
 <div class="orders border-bottom border-2 p-2 p-lg-3 py-3" *ngFor="let items of orders">
   <div class="d-flex justify-content-between pb-1 border-b-dash">
     <div>
@@ -71,6 +75,7 @@
       </div>
       <!--  -->
   </div>
+</div>
 </div>
 <!--  -->
 </div>

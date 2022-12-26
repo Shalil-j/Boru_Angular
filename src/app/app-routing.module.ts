@@ -23,6 +23,7 @@ import { SubsBillSummeryComponent } from './components/subs-bill-summery/subs-bi
 import { EditProfileComponent } from './components/profile-component/edit-profile/edit-profile.component';
 import { DateWiseDiscriptionComponent } from './components/subs-bill-summery/date-wise-discription/date-wise-discription.component';
 import { CheckoutpageComponent } from './pages/checkoutpage/checkoutpage.component';
+import { GetLocationComponent } from './components/get-location/get-location.component';
 
 
 const routes: Routes = [
@@ -51,11 +52,11 @@ const routes: Routes = [
   {
     path: 'store', component: StorepageComponent,
     children: [
-      { path: '', component: ProductlistComponentComponent },
-      // { path: '', component: BillsHistoryComponent },
+      // { path: '', component: ProductlistComponentComponent },
+      { path: '', component: ProductComponent },
       { path: 'subscribed-products', component: SubscribedProductsComponent },
       { path: 'bill-history', component: BillsHistoryComponent },
-      { path: 'product', component: ProductComponent },
+      // { path: 'product', component: ProductComponent },
     ]
   },
   { path: 'login', component: LoginComponent },
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: 'Date-wise-discription', component:DateWiseDiscriptionComponent },
   { path: 'edit-profile', component:EditProfileComponent },
   { path: 'place-order', component:CheckoutpageComponent },
+  { path: 'location-access', component:GetLocationComponent },
 
 
 ];

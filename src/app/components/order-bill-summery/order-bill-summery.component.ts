@@ -26,7 +26,7 @@ export class OrderBillSummeryComponent implements OnInit {
     {status:'done',timing:'9:00AM',}
   ];
   orderaccepted=[{status:'canceled',timing:'10:50AM',}];
-  orderdelivered=[{status:'no-response',timing:'',}]
+  orderdelivered=[{status:'no-response',timing:'10:45AM',}]
 
 
   constructor() { }
