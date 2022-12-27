@@ -19,7 +19,7 @@
             <app-login-carousel></app-login-carousel>
           </div>
           <!-- steps for mobile -->
-          <div class="steps d-none d-md-none">
+          <div class="steps d-none d-md-none" *ngIf="mobileStep">
             <!-- step 1 -->
             <div id="step-1" class="step  w-100 text-center d-flex flex-column justify-content-between align-items-center ">
               <div>
@@ -109,7 +109,7 @@
               <div class="">
               <p class="fs-4 fw-bold text-center">Welcome</p>
               <div class="input-group focus-input border  p-0  mt-3 rounded" id="mobileDiv">
-                <input type="text" class="form-control border-0 " value="7878787877" id="mobileField"  (keyup)="validateMobile($event)" placeholder="Phone No."  maxlength="10" minlength="10">
+                <input type="text" class="form-control border-0 " id="mobileField" value="{{apiResMobile}}" (keyup)="validateMobile($event)" placeholder="Phone No."  maxlength="10" minlength="10">
                 <span class="input-group-text bg-white border-0 text-secondary py-2" style="color: rgb(182, 182, 182) !important;"><i
                     class="bi bi-phone-fill"></i></span>
               </div>
@@ -153,7 +153,20 @@
                 <div class="col-9 border-end fs-5 py-2">
                   <p> Personal Detail</p>
                 </div>
-                <div class="col-3 text-center py-1"><img class="lg-icon" src="../../../assets/asserts/icons and vectors/Add image.svg" alt=""></div>
+                <image-cropper 
+                id="images_cropper"
+                [imageChangedEvent]="imgChangeEvt" 
+                [maintainAspectRatio]="true" 
+                [aspectRatio]="4 / 4"
+                [resizeToWidth]="256" 
+                format="png" 
+                (imageCropped)="cropImg($event)" 
+                (imageLoaded)="imgLoad()"
+                (cropperReady)="initCropper()" 
+                (loadImageFailed)="imgFailed()">
+              </image-cropper>
+              <button (click)="cropImage()" id="cropImgBtn">Done</button>
+                <div class="col-3 text-center py-1"><img class="lg-icon" src="{{defaultImg}}" alt=""></div>
               </div>
               <p class="text-xs text-danger pt-1" *ngIf="profileimgError">{{displayMsg}}</p>
               <!-- --------- -->
@@ -166,11 +179,12 @@
                   <input type="checkbox" class="form-check-input " id="checkT&C" (change)="checkAllValidation($event)">
                   <label class="form-check-label text-xs ms-2" for="checkT&C">By clicking confirm, I accept the <a href=""> terms & conditions </a>and Privacy policy.</label>
                </div>
+               <p class="text-xs text-danger pt-1" *ngIf="error">{{resMsg}}</p>
               </div>
               </div>
               <!--***********  -->
               <div>
-                <button id="profilelogin" type="submit" class=" btn btn-inactive login-btn w-100" disabled>Login</button>
+                <button id="profilelogin" type="submit" (click)="uploadProfile()" class=" btn btn-inactive login-btn w-100">Confirm</button>
             </div></div>
               </div>
             </form>

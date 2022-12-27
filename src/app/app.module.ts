@@ -3,6 +3,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserModule , Title } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -86,9 +89,12 @@ import { GetLocationComponent } from './components/get-location/get-location.com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
     CarouselModule,
     FormsModule,
     CalendarModule,
+    ImageCropperModule,
   ],
   providers: [
     Title

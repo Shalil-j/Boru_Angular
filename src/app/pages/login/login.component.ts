@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { Observable } from 'rxjs';
+import { LoginService } from "../service/login/login.service";
+
 declare var $: any;
 @Component({
   selector: 'app-login',
@@ -16,7 +21,7 @@ export class LoginComponent implements OnInit {
   displayMsg: any = "";
   nameMsg: any = "";
   emailMsg: any = "";
-
+  error:boolean=false;resMsg:any="";
   otpDiv: boolean = false;
 
   mobileError: boolean = false;
@@ -24,16 +29,24 @@ export class LoginComponent implements OnInit {
   profileimgError: boolean = false;
   nameError: boolean = false;
   emailError: boolean = false;
-
-
-
+  apiResMobile:any="";apiResOTP:any="";
   profilelogin: boolean = false;
   mobilelogin: boolean = true;
+  mobileStep:boolean=true;
+  fileInfos: Observable<any> | null = null;
+  selectedFiles: FileList | undefined;
+  imgChangeEvt: any = '';
+  cropImgPreview: any = '';
+  defaultImg:any="../../../assets/asserts/icons and vectors/Add image.svg";
 
-
-  constructor() { }
+  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { 
+    route.params.subscribe(val => {
+      
+    })
+  }
 
   ngOnInit(): void {
+
     $(window).on('load', () => {
 
       window.setTimeout(function () {
@@ -43,23 +56,45 @@ export class LoginComponent implements OnInit {
         });
       }, 2000);
     });
-
-    $(document).ready(function () {
-
-      // steps
-      $('#next-step-2').click(() => {
-        $('#step-2').removeClass('d-none');
-        $('#step-1').addClass('d-none');
+    console.info("Hello")
+    if(localStorage.getItem("user_id")!=null || localStorage.getItem("user_id") !=""){
+      console.info("Hello0")
+      if(localStorage.getItem("user_name")){
+        console.info("Hello1")
+        if(localStorage.getItem("user_name")!=null || localStorage.getItem("user_name") !=""){
+          console.info("Hello2")
+            this.router.navigateByUrl("/")
+        }else{
+          console.info("Hello3")
+          this.profilelogin = true;
+          this.mobilelogin = false;
+          this.mobileStep = false;
+          $('#login-form').removeClass('d-none');
+        }
+      }else{
+        this.profilelogin = true;
+          this.mobilelogin = false;
+          this.mobileStep = false;
+          $('#login-form').removeClass('d-none');
+      }
+    }else{
+      this.mobileStep  = true;
+      $(document).ready(function () {
+        // steps
+        $('#next-step-2').click(() => {
+          $('#step-2').removeClass('d-none');
+          $('#step-1').addClass('d-none');
+        });
+        $('#next-step-3').click(() => {
+          $('#step-3').removeClass('d-none');
+          $('#step-2').addClass('d-none');
+        });
+        $('#get-started').click(() => {
+          $('#login-form').removeClass('d-none');
+          $('#step-3').addClass('d-none');
+        });
       });
-      $('#next-step-3').click(() => {
-        $('#step-3').removeClass('d-none');
-        $('#step-2').addClass('d-none');
-      });
-      $('#get-started').click(() => {
-        $('#login-form').removeClass('d-none');
-        $('#step-3').addClass('d-none');
-      });
-    });
+    }
   }
 
 
@@ -122,15 +157,26 @@ export class LoginComponent implements OnInit {
       this.mobileError = true;
       this.displayMsg = "Please enter your valid mobile number";
     } else {
-      $('#getOTPBtn').removeClass("btn-inactive");
-      $('#getOTPBtn').addClass("btn-active");
-      $('#mobileDiv').removeClass("error");
-      this.mobileError = false;
-      this.displayMsg = "";
-      this.otpDiv = true
-      $('#loginBtn').removeClass('d-none');
-      $('#getOTPBtn').addClass('d-none');
-      $("#mobileField").prop('disabled', true);
+      var data = {
+        "mobile":mobileField
+      }
+      this.loginService.getSendOTP(data).subscribe((res:any)=>{
+        if(res.status=="true"){
+          this.apiResMobile = res.mobile;
+          this.apiResOTP = res.otp_number;
+          $('#getOTPBtn').removeClass("btn-inactive");
+          $('#getOTPBtn').addClass("btn-active");
+          $('#mobileDiv').removeClass("error");
+          this.mobileError = false;
+          this.displayMsg = "";
+          this.otpDiv = true
+          $('#loginBtn').removeClass('d-none');
+          $('#getOTPBtn').addClass('d-none');
+          $("#mobileField").prop('disabled', true);
+        }else{
+
+        }
+      });
     }
   }
 
@@ -193,13 +239,37 @@ export class LoginComponent implements OnInit {
 
       this.otpError = true;
       this.displayMsg = "OTP should be a number of 6 digits";
+    }  else if (this.apiResOTP!=otpField) {
+      $('#loginBtn').removeClass("btn-active");
+      $('#loginBtn').addClass("btn-inactive");
+      $('#otpDiv').addClass("error");
+      this.otpError = true;
+      this.displayMsg = "Please enter a valid OTP";
     } else {
-      $('#loginBtn').addClass("btn-active");
-      $('#loginBtn').removeClass("btn-inactive");
-      $('#otpDiv').removeClass("error");
-      this.otpError = false;
-      this.profilelogin = true;
-      this.mobilelogin = false;
+      var data = {
+        "mobile":this.apiResMobile,
+        "otp_number":otpField
+      }
+      this.loginService.verifyOTP(data).subscribe((res:any)=>{
+        if(res.status=="true"){
+          $('#loginBtn').addClass("btn-active");
+          $('#loginBtn').removeClass("btn-inactive");
+          $('#otpDiv').removeClass("error");
+          this.otpError = false;
+          this.profilelogin = true;
+          this.mobilelogin = false;
+          for (const item of res.data) {
+            localStorage.setItem("user_id", item.user_id)
+            localStorage.setItem("user_code", item.user_code)
+            localStorage.setItem("mobile", item.mobile)
+          }
+        }else{
+          $('#otpDiv').addClass("error");
+          this.otpError = true;
+          this.displayMsg = "Please enter a valid OTP";
+        }
+      });
+      
     }
   }
   // *************************
@@ -249,93 +319,111 @@ export class LoginComponent implements OnInit {
     }
   }
 
+    
+  onFileChange(event: any): void {
+      this.imgChangeEvt = event;
+  }
+  cropImg(e: ImageCroppedEvent) {
+      this.cropImgPreview = e.base64;
+  }
+  imgLoad() {
+      // display cropper tool
+  }
+  initCropper() {
+      // init cropper
+  }
+  
+  imgFailed() {
+      // error msg
+  }
+
+  cropImage(){
+    $('#images_cropper').css('display', "none");
+    $('#cropImgBtn').css('display', "none");
+  }
+
+
   checkProfileimg(e:any){
-    console.log(e)
     if(e.target.value === 0){
       $('#selectimgDiv').addClass('error');
       this.displayMsg='Please select your profile image'
       this.profileimgError = true;
     }else{
+      
+      $('#images_cropper').css('display', "block");
+      $('#cropImgBtn').css('display', "block");
+      this.imgChangeEvt = e;
+      this.defaultImg = this.cropImgPreview
       this.profileimgError = false;
       $('#selectimgDiv').removeClass('error');
+
     }
   }
 
   checkAllValidation(e:any){
-  var profileimg=$('#profile-img').val();
-  var name = $('#fullname').val();
-  var email = $('#email').val();
+    var name = $('#fullname').val();
+    var email = $('#email').val();
 
-// email
-    if (email == "" || email == undefined || email == null) {
-      this.emailMsg = 'Please enter your email address'
-      this.emailError = true;
-      $('#email').addClass('error');
+    if (name == "" || name == undefined || name == null) {
+      this.nameMsg = 'Please enter your full name'
+      this.nameError = true;
+      $('#fullname').addClass('error');
+    } else if (name.length <= 2) {
+      this.nameMsg = 'Full name should be more than 3 characters'
+      this.nameError = true;
+      $('#fullname').addClass('error');
+    } else if (!this.nameValidation.test(name)) {
+      this.nameMsg = 'Please enter your proper full name'
+      this.nameError = true;
+      $('#fullname').addClass('error');
+    } else {
+      this.nameError = false
+      $('#fullname').removeClass('error');
     }
-    else if (email.length < 0) {
-      this.emailMsg = 'Please 2 enter your email address'
-      this.emailError = true;
-      $('#email').addClass('error');
-    }
-    else if (!this.emailValidation.test(email)) {
-      this.emailMsg = 'Please enter your proper email address'
-      this.emailError = true;
-      $('#email').addClass('error');
-    }
-    else {
-      this.emailError = false;
-      $('#email').removeClass('error');
-    }
-// name
-if (name == "" || name == undefined || name == null) {
-  this.nameMsg = 'Please enter your full name'
-  this.nameError = true;
-  $('#fullname').addClass('error');
-}
-else if (name.length <= 2) {
-  this.nameMsg = 'Full name should be more than 3 characters'
-  this.nameError = true;
-  $('#fullname').addClass('error');
-}
-else if (!this.nameValidation.test(name)) {
-  this.nameMsg = 'Please enter your proper full name'
-  this.nameError = true;
-  $('#fullname').addClass('error');
-}
-else {
-  this.nameError = false
-  $('#fullname').removeClass('error');
-}
-// profile img
-if(profileimg.value == null) {
-  $('#selectimgDiv').addClass('error');
-  this.displayMsg='Please select your profile image'
-  this.profileimgError = true;
-}
-else{
-  alert('got file')
-  this.profileimgError = false;
-  $('#selectimgDiv').removeClass('error');
-}
-}
 
-function() {
-  $('#Personal-info > input').keyup(()=>{
-    var empty = false;
-    $('#Personal-info > input').each(()=>{
-      if($(this).val() == ''){
-        empty=true;
+  }
+
+  uploadProfile(){
+    var profileimg=$('#profile-img').val();
+    var name = $('#fullname').val();
+    var email = $('#email').val();
+  
+    if (name == "" || name == undefined || name == null) {
+      this.nameMsg = 'Please enter your full name'
+      this.nameError = true;
+      $('#fullname').addClass('error');
+    } else if (name.length <= 2) {
+      this.nameMsg = 'Full name should be more than 3 characters'
+      this.nameError = true;
+      $('#fullname').addClass('error');
+    } else if (!this.nameValidation.test(name)) {
+      this.nameMsg = 'Please enter your proper full name'
+      this.nameError = true;
+      $('#fullname').addClass('error');
+    } else {
+      var data = {
+        "mobile":localStorage.getItem("mobile"),
+        "profile_pic":this.cropImgPreview,
+        "full_name":name,
+        "email_id":email
       }
-    });
-    if(empty){
-      $('#profilelogin').attr('disabled','disabled').addClass('btn-inactive');
-    }else{
-      $('#profilelogin').removeAttr('disabled','disabled').addClass('btn-active').removeClass('btn-inactive');
+      this.loginService.setPersonalDetail(data).subscribe((res:any)=>{
+        if(res.status=="true"){
+          this.nameError = false
+          $('#fullname').removeClass('error');
+          for (const item of res.data) {
+            localStorage.setItem("user_name", item.first_name)
+          }
+          this.router.navigateByUrl("/");
+        }else{
+          this.error=true;
+          this.resMsg = res.message;
+        }
+      });
+      
     }
-  })
-}
-
-
+  
+  }
 
 
 }
