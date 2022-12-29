@@ -70,7 +70,7 @@ color:#818181 ;
   }
 @media only screen and (max-width: 600px){
 #login-form,.step{
-  height: 90vh;
+  min-height: 90vh;
 }
 }
 

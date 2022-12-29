@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
   cropImgPreview: any = '';
   defaultImg:any="../../../assets/asserts/icons and vectors/Add image.svg";
 
-  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { 
+  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) {
     route.params.subscribe(val => {
-      
+
     })
   }
 
@@ -56,26 +56,40 @@ export class LoginComponent implements OnInit {
         });
       }, 2000);
     });
-    console.info("Hello")
-    if(localStorage.getItem("user_id")!=null || localStorage.getItem("user_id") !=""){
-      console.info("Hello0")
-      if(localStorage.getItem("user_name")){
-        console.info("Hello1")
-        if(localStorage.getItem("user_name")!=null || localStorage.getItem("user_name") !=""){
-          console.info("Hello2")
-            this.router.navigateByUrl("/")
+    if(localStorage.getItem("user_id")){
+      if(localStorage.getItem("user_id")!=null || localStorage.getItem("user_id") !=""){
+        if(localStorage.getItem("user_name")){
+          if(localStorage.getItem("user_name")!=null || localStorage.getItem("user_name") !=""){
+              this.router.navigateByUrl("/")
+          }else{
+            this.profilelogin = true;
+            this.mobilelogin = false;
+            this.mobileStep = false;
+            $('#login-form').removeClass('d-none');
+          }
         }else{
-          console.info("Hello3")
           this.profilelogin = true;
-          this.mobilelogin = false;
-          this.mobileStep = false;
-          $('#login-form').removeClass('d-none');
+            this.mobilelogin = false;
+            this.mobileStep = false;
+            $('#login-form').removeClass('d-none');
         }
       }else{
-        this.profilelogin = true;
-          this.mobilelogin = false;
-          this.mobileStep = false;
-          $('#login-form').removeClass('d-none');
+        this.mobileStep  = true;
+        $(document).ready(function () {
+          // steps
+          $('#next-step-2').click(() => {
+            $('#step-2').removeClass('d-none');
+            $('#step-1').addClass('d-none');
+          });
+          $('#next-step-3').click(() => {
+            $('#step-3').removeClass('d-none');
+            $('#step-2').addClass('d-none');
+          });
+          $('#get-started').click(() => {
+            $('#login-form').removeClass('d-none');
+            $('#step-3').addClass('d-none');
+          });
+        });
       }
     }else{
       this.mobileStep  = true;
@@ -269,7 +283,7 @@ export class LoginComponent implements OnInit {
           this.displayMsg = "Please enter a valid OTP";
         }
       });
-      
+
     }
   }
   // *************************
@@ -319,7 +333,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-    
+
   onFileChange(event: any): void {
       this.imgChangeEvt = event;
   }
@@ -332,7 +346,7 @@ export class LoginComponent implements OnInit {
   initCropper() {
       // init cropper
   }
-  
+
   imgFailed() {
       // error msg
   }
@@ -340,8 +354,13 @@ export class LoginComponent implements OnInit {
   cropImage(){
     $('#images_cropper').css('display', "none");
     $('#cropImgBtn').css('display', "none");
-  }
+    $('#croperBtns').addClass('d-none');
 
+  }
+  chooseother(){
+    $('#profile-img').click();
+    $('#croperBtns').addClass('d-none');
+  }
 
   checkProfileimg(e:any){
     if(e.target.value === 0){
@@ -349,7 +368,7 @@ export class LoginComponent implements OnInit {
       this.displayMsg='Please select your profile image'
       this.profileimgError = true;
     }else{
-      
+      $('#croperBtns').removeClass('d-none');
       $('#images_cropper').css('display', "block");
       $('#cropImgBtn').css('display', "block");
       this.imgChangeEvt = e;
@@ -363,31 +382,36 @@ export class LoginComponent implements OnInit {
   checkAllValidation(e:any){
     var name = $('#fullname').val();
     var email = $('#email').val();
+    // if(this.checkAllValidation)
+
 
     if (name == "" || name == undefined || name == null) {
+      $('#profilelogin').removeClass('btn-active').addClass('btn-inactive').attr('disabled');
       this.nameMsg = 'Please enter your full name'
       this.nameError = true;
       $('#fullname').addClass('error');
     } else if (name.length <= 2) {
+      $('#profilelogin').removeClass('btn-active').addClass('btn-inactive').attr('disabled');
       this.nameMsg = 'Full name should be more than 3 characters'
       this.nameError = true;
       $('#fullname').addClass('error');
     } else if (!this.nameValidation.test(name)) {
+      $('#profilelogin').removeClass('btn-active').addClass('btn-inactive').attr('disabled');
       this.nameMsg = 'Please enter your proper full name'
       this.nameError = true;
       $('#fullname').addClass('error');
     } else {
+      $('#profilelogin').removeClass('btn-inactive').addClass('btn-active').removeAttr('disabled');
       this.nameError = false
       $('#fullname').removeClass('error');
     }
-
   }
 
   uploadProfile(){
     var profileimg=$('#profile-img').val();
     var name = $('#fullname').val();
     var email = $('#email').val();
-  
+
     if (name == "" || name == undefined || name == null) {
       this.nameMsg = 'Please enter your full name'
       this.nameError = true;
@@ -401,6 +425,7 @@ export class LoginComponent implements OnInit {
       this.nameError = true;
       $('#fullname').addClass('error');
     } else {
+
       var data = {
         "mobile":localStorage.getItem("mobile"),
         "profile_pic":this.cropImgPreview,
@@ -420,9 +445,9 @@ export class LoginComponent implements OnInit {
           this.resMsg = res.message;
         }
       });
-      
+
     }
-  
+
   }
 
 
