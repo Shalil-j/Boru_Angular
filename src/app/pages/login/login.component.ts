@@ -56,26 +56,40 @@ export class LoginComponent implements OnInit {
         });
       }, 2000);
     });
-    console.info("Hello")
-    if(localStorage.getItem("user_id")!=null || localStorage.getItem("user_id") !=""){
-      console.info("Hello0")
-      if(localStorage.getItem("user_name")){
-        console.info("Hello1")
-        if(localStorage.getItem("user_name")!=null || localStorage.getItem("user_name") !=""){
-          console.info("Hello2")
-            this.router.navigateByUrl("/")
+    if(localStorage.getItem("user_id")){
+      if(localStorage.getItem("user_id")!=null || localStorage.getItem("user_id") !=""){
+        if(localStorage.getItem("user_name")){
+          if(localStorage.getItem("user_name")!=null || localStorage.getItem("user_name") !=""){
+              this.router.navigateByUrl("/")
+          }else{
+            this.profilelogin = true;
+            this.mobilelogin = false;
+            this.mobileStep = false;
+            $('#login-form').removeClass('d-none');
+          }
         }else{
-          console.info("Hello3")
           this.profilelogin = true;
-          this.mobilelogin = false;
-          this.mobileStep = false;
-          $('#login-form').removeClass('d-none');
+            this.mobilelogin = false;
+            this.mobileStep = false;
+            $('#login-form').removeClass('d-none');
         }
       }else{
-        this.profilelogin = true;
-          this.mobilelogin = false;
-          this.mobileStep = false;
-          $('#login-form').removeClass('d-none');
+        this.mobileStep  = true;
+        $(document).ready(function () {
+          // steps
+          $('#next-step-2').click(() => {
+            $('#step-2').removeClass('d-none');
+            $('#step-1').addClass('d-none');
+          });
+          $('#next-step-3').click(() => {
+            $('#step-3').removeClass('d-none');
+            $('#step-2').addClass('d-none');
+          });
+          $('#get-started').click(() => {
+            $('#login-form').removeClass('d-none');
+            $('#step-3').addClass('d-none');
+          });
+        });
       }
     }else{
       this.mobileStep  = true;
@@ -262,6 +276,10 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("user_id", item.user_id)
             localStorage.setItem("user_code", item.user_code)
             localStorage.setItem("mobile", item.mobile)
+            if(item.first_name!="" || item.first_name!=null){
+              localStorage.setItem("user_name", item.first_name)
+              this.router.navigateByUrl("/")
+            }
           }
         }else{
           $('#otpDiv').addClass("error");

@@ -6,6 +6,7 @@ import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { AgmCoreModule  } from '@agm/core';  
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -95,6 +96,7 @@ import { GetLocationComponent } from './components/get-location/get-location.com
     FormsModule,
     CalendarModule,
     ImageCropperModule,
+    
   ],
   providers: [
     Title

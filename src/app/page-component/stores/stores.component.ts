@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StoreService } from 'src/app/pages/service/store/store.service';
+
 
 @Component({
   selector: 'app-stores',
@@ -16,9 +19,29 @@ export class StoresComponent implements OnInit {
     {shop_status:'open',shop_img:'https://www.bisleri.com/images/our-brands-bisleri-bottle-new.png',shop_name:'Bislery',shop_add:'andheri cave road',shop_type:'water'},
   ]
 
-  constructor() { }
+  shopResult:any;shopDetailresult:any;
+
+  constructor(private storeService: StoreService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getStoreDetail()
+  }
+
+  getStoreDetail(){
+    var data = {
+      "user_id":1,
+      "vendor_id":1
+    }
+    this.storeService.getStoreDetail(data).subscribe((res:any)=>{
+      if(res.status=="true"){
+        this.shopResult = res
+        for (const item of res.data) {
+          this.shopDetailresult = item
+        }
+      }else{
+
+      }
+    })
   }
 
 }

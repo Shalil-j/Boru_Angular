@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HomepageService } from 'src/app/pages/service/homepage/homepage.service';
 
 @Component({
   selector: 'app-catalogue-carousel',
@@ -10,19 +12,32 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 export class CatalogueCarouselComponent implements OnInit {
 
-  constructor() {
+  bannerDetailData:any;
+  longitude:any; latitude:any;
 
-   }
-    cataloguelist=[
-    {catalogue_name : 'milk',  catalogue_url: '../../../assets/asserts/icons and vectors/Dairy.svg'},
-    {catalogue_name : 'meal',  catalogue_url: '../../../assets/asserts/icons and vectors/Grocery .svg'},
-    {catalogue_name : 'coconut',  catalogue_url: '../../../assets/asserts/icons and vectors/Coconut.svg'},
-    {catalogue_name : 'fruits',  catalogue_url: '../../../assets/asserts/icons and vectors/fruits and vegetables.svg'},
-    {catalogue_name : 'water',  catalogue_url: '../../../assets/asserts/icons and vectors/Water.svg'},
-    {catalogue_name : 'bakery',  catalogue_url: '../../../assets/asserts/icons and vectors/Bakery.svg'},
-    {catalogue_name : 'meat',  catalogue_url: '../../../assets/asserts/icons and vectors/Newspaper.svg'},
-    {catalogue_name : 'newspaper',  catalogue_url: '../../../assets/asserts/icons and vectors/egg fish meat.svg'}
-  ]
+  constructor(private homepageService: HomepageService) {
+    this.latitude = localStorage.getItem("latitude")
+    this.longitude = localStorage.getItem("longitude")
+
+  }
+
+
+  ngOnInit(): void {
+    this.SubscriberShop()
+  }
+
+  SubscriberShop(){
+    var data = {
+      "user_id":1,
+    }
+    this.homepageService.getSubscribeShop(data).subscribe((res:any)=>{
+      if(res.status=="true"){
+        this.bannerDetailData = res.data
+      }else{
+
+      }
+    });
+  }
 
 
   customOptions: OwlOptions = {
@@ -46,11 +61,6 @@ export class CatalogueCarouselComponent implements OnInit {
 
     },
     nav: true
-  }
-
-
-
-  ngOnInit(): void {
   }
 
 }

@@ -1,11 +1,8 @@
 <div class="bg-white p-3">
 <owl-carousel-o [options]="header">
-  <ng-template carouselSlide *ngFor="let items of banner">
+  <ng-template carouselSlide *ngFor="let items of bannerDetailData">
               <div class="header-banner text-center">
-              <img
-                src="{{items.url}}"
-                alt=""
-              />
+              <img src="{{items.banner}}" alt="{{items.shop_name}}" />
             </div>
   </ng-template>
 </owl-carousel-o>
