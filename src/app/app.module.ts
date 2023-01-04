@@ -46,6 +46,7 @@ import { SubsBillSummeryComponent } from './components/subs-bill-summery/subs-bi
 import { EditProfileComponent } from './components/profile-component/edit-profile/edit-profile.component';
 import { DateWiseDiscriptionComponent } from './components/subs-bill-summery/date-wise-discription/date-wise-discription.component';
 import { GetLocationComponent } from './components/get-location/get-location.component';
+import { SubsStoresCarouselComponent } from './components/carousels/subs-stores-carousel/subs-stores-carousel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +86,7 @@ import { GetLocationComponent } from './components/get-location/get-location.com
     EditProfileComponent,
     DateWiseDiscriptionComponent,
     GetLocationComponent,
+    SubsStoresCarouselComponent,
   ],
   imports: [
     BrowserModule,

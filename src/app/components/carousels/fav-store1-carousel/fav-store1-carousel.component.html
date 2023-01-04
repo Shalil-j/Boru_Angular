@@ -1,7 +1,8 @@
-<div class="p-2 p-md-5 bg-white">
-  <h5>Your Favourite Store</h5>
+<div class="p-3 p-md-5 bg-white my-2">
+  <p class="mb-2">Your Favourite Store</p>
   <owl-carousel-o [options]="customOptions" >
     <ng-template carouselSlide *ngFor="let items of fav_store">
+      <a href="" class="page-link">
       <div class="store-div d-flex align-items-center p-2 rounded">
         <div class="store-logo">
           <img
@@ -10,10 +11,11 @@
           />
         </div>
         <div class="ms-3">
-          <h5 class="">{{items.store_name}}</h5>
+          <p class="fw-semibold">{{items.store_name}}</p>
           <p class="text-xs">{{items.store_add}}</p>
         </div>
       </div>
+    </a>
     </ng-template>
   </owl-carousel-o>
   </div>

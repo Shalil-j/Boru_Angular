@@ -52,11 +52,11 @@ const routes: Routes = [
   {
     path: 'store', component: StorepageComponent,
     children: [
-      // { path: '', component: ProductlistComponentComponent },
-      { path: '', component: ProductComponent },
+      { path: '', component: ProductlistComponentComponent },
+      // { path: '', component: ProductComponent },
       { path: 'subscribed-products', component: SubscribedProductsComponent },
       { path: 'bill-history', component: BillsHistoryComponent },
-      // { path: 'product', component: ProductComponent },
+      { path: 'product', component: ProductComponent },
     ]
   },
   { path: 'login', component: LoginComponent },

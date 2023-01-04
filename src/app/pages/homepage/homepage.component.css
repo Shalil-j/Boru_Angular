@@ -56,6 +56,14 @@
     margin-left: 4rem;
     margin-right: 4rem;
 } */
+.subs-store{
+  list-style: none;
+  padding: 0;
+}
+.subs-store-img{
+  width: 3.5rem;
+  height: 3.5rem;
+}
 @media only screen and (max-width: 600px){
   .main-div{
     margin-left: 0;

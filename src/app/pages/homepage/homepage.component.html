@@ -20,7 +20,26 @@
         <img class="lg-icon" src="../../../assets/asserts/icons and vectors/Web customer profile.svg" alt="" />
         <h3 class="fs-4 ms-3 ">Shubham</h3>
       </a>
-
+<!--  -->
+<div class="mt-5">
+  <p>Subscription Store</p>
+  <ul class="subs-store">
+    <li class="py-2 pe-2" *ngFor="let items of fav_store">
+      <a href="" class="page-link">
+      <div class="d-flex align-items-center ">
+        <div>
+        <div class="subs-store-img">
+          <img class="img-cover rounded-circle" src="{{items.store_img}}" alt="">
+        </div></div>
+        <div class="ms-2">
+          <p >{{items.store_name}}</p>
+          <p class="fw-light text-trunk" style="--text-trunk-line:1">{{items.store_add}}</p>
+        </div>
+      </div>
+    </a></li>
+  </ul>
+</div>
+<!--  -->
       <div class="google-playstore text-center mt-5">
         <p class="fw-semibold pt-5">Download Mobile App</p>
         <a

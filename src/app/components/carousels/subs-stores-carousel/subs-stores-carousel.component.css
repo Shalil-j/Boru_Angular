@@ -1,0 +1,19 @@
+.fav-store-div{
+  width: 5.8rem;
+}
+.fav-store-div span{
+  max-width: 4.5rem;
+}
+.fav-store-img{
+  width: 5rem;
+  height: 5rem;
+  background: #ffffff;
+  padding: 3px;
+  border-radius: 50%;
+  border: 3px solid #2C7BE5;
+}
+.fav-store-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
