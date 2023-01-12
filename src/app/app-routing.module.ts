@@ -48,11 +48,13 @@ const routes: Routes = [
       }
     ]
   },
+  {path:"shop", component:ProductlistComponentComponent},
 
   {
     path: 'store', component: StorepageComponent,
     children: [
-      { path: '', component: ProductlistComponentComponent },
+
+      { path: ':id', component: ProductlistComponentComponent },
       // { path: '', component: ProductComponent },
       { path: 'subscribed-products', component: SubscribedProductsComponent },
       { path: 'bill-history', component: BillsHistoryComponent },

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HomepageService } from '../service/homepage/homepage.service';
+// import {AgmMap, MapsAPILoader  } from '@agm/core';
+
+
 declare var $:any;
 @Component({
   selector: 'app-homepage',
@@ -6,6 +11,7 @@ declare var $:any;
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+
 
   fav_store=[
     {store_add : 'mumbai,sion(East)' ,store_name : 'Amul',store_img : 'data:image/png;base64,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'},
@@ -15,16 +21,80 @@ export class HomepageComponent implements OnInit {
     {store_add : 'mumbai,fort(CST)' ,store_name : 'D mart',store_img : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAApVBMVEX///8AAAAqdEYzek74+/ktdkm50cLy9/SkxLAweEvM3dJAg1k9gFfH28+ryLbd6eFnnHvT4tmUuaJdlXI7f1T29vbMzMxKiWGWlpbq6up/f394p4rs7Ox4eHjS0tKfn58XFxclJSWrq6tOTk4eHh43Nzc/Pz9wcHCKiopiYmK3t7dGRkbe3t5aWlrDw8MrKysQEBDn8Op+q4+Ls5pSjmhfl3WavaZuNAFtAAAJmElEQVR4nO2dCXOqOhTHofLEV1DcUFHEvWpF68Lr9/9oL0FvL0sIWQ6gM/137nSZO8n5meSck4WgqC8upWoDZPULULV+AarWL0DVKgJg/bEfj5YnT/mRd1qOxvuPdQGVwQKcP7aziN1pebPtxxm0SjiA+XFEtT1CMTrOwaoFAvjYDdiM/6PB7gOmZgiAw8jhs/4uZ3QAqFwaYLMTMf6PdpuKAfYnGfOxTvvqANZjV9Z8LHcs417FAb5GENbfNfoqHeBrBmc+1kwUQQxgDfjp/9FIrCMJAYzhzccalwRwLMZ8rGMJAItlcfYrynJRNMC2SPOxtoUCLD6Ltl9RPhfFAeyLNx+LKzbzABTgO8kaFQLwxZkwy2jAHtaYAQp0niQxO1RWgGm59ivKFBagtO7/V4wDgQ2g0OCVpSUYwFl61iKmE8v6BQPAnHGxAV4ew+JFPsC6MvsRQX6KnQsg+flrkgS5bZAHcJb8/JsdSYK8cZAHIDt+r13JAk5yANL+cxjIlpDjTekA8vGr1pcugh7RqAAA+QMAAD2roAEA5G9WrXaRL4WW2VEAvsRrbHa7zdCBdmu1Bv6u12/dd/HyKNk1BUA8/2/1DCOoY4KgVuth+1tDw/ivLlzgQARAfABrk36tVgtw3zFrNRN9uwzRH2oT8aiWPZAzASTmv3obm9vHAIgEj+IL/kOtLRGWM+fJWQAL8bpQC9QeLdDBABYCMMIWkChTWXACSK2fNFHXN/AoDkmuCKmOSHpSWcUnH4Dc+pVmtVoW7i/hBz+8/6Uu6U8zVrzIADId6I4QdnfLxACG9fcvMiJ3IjKASAqkWc3OJW5lEI7d0JFG/t+l07REAMhJERFALARr7xPD6E1ujaal49+t0Jtif9QODdY79ca1HZjGRDCkEQMyEUCsfITQuaJejz3PMOgNH+aHMoKh+fjpKj6WWQFk9i+sW8zwpIbfMkOZtANCAFhLVIF0aQQZCP1eS5crmzDBJABITwL0FgnB/K8u7YgIGUUaQCIJ/YuQboVA3nyFlJamAWD2T612jKA/AZgWIM3yASAaAEvv3Z3OnaMH8fFjpZogBQC2jHsL/WY3TIeMBlSpqVGQBJhD1aR8h4nQpRMCiM9lkko6oiQA3B52GIeNcE5T61/Bik3GgiQAyPkTLD1MhFDXuYY+CGoMKC4dAG4jqYlnkUNkt4670lBiRp/QkQoAthOgtR8NoGg3/JPMdDKuEw0AyocqyjvuQe0wcwgdaiC5yBvRFwVA6vxbVOHCxPCR9uPe1JdYkkhoRwGAquM+K249bNa+kScK4EZBNsAHVBW4Afq3n9RTv/b/BWyCj0wAsChcD5Drj6TOFxSPgyZU6aNMAKHzqwTpqAHi2Zs1ARwFThbABqgC1AD9SWLejgjgmmCTAQCVRugT85pad7AmJlgTjDMAoI6j1Hs3QvZvXXtQKd2ADDAHKl6/dYmzl0v3Jjkl/tGcCLACKt3KWkS81IUWtAhaEQGgwvAl83PWYeaVsWAcAajwSAGvPBLAuWqreHQmAIBFgTK0IQDAnKm8WDmCcUR7AgBIIqQ12jlqQVQTSYf+AoCMYb3by1EDJBx7BACIchXN6uQIyJOmAeYwBZeleQrgpZxQxA39AJR8MldWxxRA4Q8GwGqbAgBbkChHuxRAJYdzxbVMAQA8m/H+3WXSN8Ai12cKQD6O6d+mafbNfr6+5YOZlwKQLlKxbnlpxB9J7bU+VACAoumMgsgmigAoVb8AVesXoGqBA2icejIArTnhVFMSIQVgSxV3wTt5/7Lpn1BXuWBmpwDkVnabwZBTkovtgxSAZDLHOwRkB0E6mQO+paBozVIALz+hefkpJdTuQElapQBeflllLl4Y8zwAcF6QXtgSj2R6vSGod2GCnzgWARA+adMZsoTfRwCOqS28Z3YiAIj6Ua1uJtS/f+XLFI7GOwKA6AaH3mRbTCGpI9qHSBscL+WGSFtMZ7l8tFTZpE0+uPNyxStybi4CUNC1R0VoTAQ4VG0Wuw5EgNcZBJEhEDtuIzCn0ZvSEvCk0YfiogACGfV73q5qvgSi8TYDYMPdh/QrJXUgJQ8xveGvty733r39lQHAv0dgBaZhGKaRTCbYdE83Au7lCU/NAuB2pHodQNwtMM4EeJFsYpMJAHZwtFDFjo0mAEq/x0lEUwrA4gVimb2gALzCbnHiqdwEwAssrqyoADyhwILwoXdx7Hx7Kh2APZ3QerTFZyP8F34xiOMhp+Sj9akH4Zifw+qk9gPyUodICpEU8+zezXsQjj0at+N5D6P5byTz3956+fXdlXomOgWwYGwCrd6CFGMfche5AMzrQ/xbGgDbHbuUuWmAxRPnE06qAUiPpD/x5J5wKwABYP60TeCwXQpQ1s20/CLd0UO8bMKv2lKyfJKtRIBDniuF9UCMjsglvm+BfDlMniud0G7vICp/B6Gfd6497UKzAdb0TmQZrFnDPfKSo29SQ3ob+OSbLzMuSDpSZzbffWaAjNyHpD41IbIzLpvLuqKK9jiE1ouvoxiPr8cSy+MXbhnUmwOy7jnLAqB1Iq3zXohos4KMDkS5pm0Fdr8BhNxVlp3ZF+VNn2iCb2ffF0m5qvCJJviUO0cpAIunCcj+QghAPTxJVufQXnlEA1D3T0HgUN9HQAVQp2lXZDXhVlMISm93uPRr5OkA6i7pirRbfhRmjLwk1W7JfMImp0CsAOosQWAFIHlPpoJEE9jpS6n4AM7LOEEjJ4+TM//tzYzfBWUvZS/OVucxAn3CtNImoYkes58wieQEiBOIH25iVXTHicF+BoBEG5QoFvtZANTzqJLEzh0BvUABaVdBRHNy/CcXgDotncBhfA0KI4C6Lzmz81nfZ8QKoB68Eoey7TG/spIZQF3MShvK7mzBbBY7ABoIJXUjn/UtQLwA6qqMbmR7mfNfaQB1PSq8EXzOtyPyAajq0St0JLge73sFeQHU9a7ARvB33C+n5AZADnVQUFRzBgLv+xUAQFHNKwDB8YTekysEoM6n0EPB9aYMqScYAAprY0gE1xsvBA0RBUAIU6iO5HhTUfNlAFBH2p586chm+6etWOeRB0BazeSawfFmXHEXHAD1pO3Ad4TawXb8wXYhW780ANJm+snNgKz/nEq/Il2FAUD62s48ZghkvDfbQlivggEgnQ/T5cD3XSqF7fr+YDk9sEzX2QQHgHXeHMfLgef7juPaERLbdh3H973BcnzcwBmPBQtw13yz2k93s+XgR8vZbrpfbWTcZZaKAChVvwBV6xegav0CVK2XB/gfvwcNgtta0mAAAAAASUVORK5CYII='},
   ]
 
-  constructor() {
+ 
+  geoLocationLat:any; addressLatLong:any; geoLocationLong:any;
+  changeAddressTrigger:number = 0;bannerDetailData:any;
 
+
+  constructor( private router: Router, private route: ActivatedRoute, private homepageService: HomepageService) {
+    this.getCoords().then((coords:any)=>{
+      localStorage.setItem("latitude", "19.1396734")
+      localStorage.setItem("longitude", "72.9254585")
+      this.getAddressFromLatLong(coords.latitude, coords.longitude)
+    })
    }
 
   ngOnInit(): void {
-  //   $(".menu-item-list").on('click', 'a',()=> {
-  //     // event.preventDefault();
-  //     $(".menu-item-list a.active").removeClass("active");
-  //     $(this).addClass("active");
-  // });
+
+  }
+
+  getCoords() {
+    return new Promise((resolve, reject) =>
+      navigator.permissions ?
+        // Permission API is implemented
+        navigator.permissions.query({
+          name: 'geolocation'
+        }).then(permission =>{
+          // is geolocation granted?
+            if(permission.state === "granted"){
+              navigator.geolocation.getCurrentPosition((pos:any) => {
+                resolve(pos.coords)
+              })
+            }else{
+              //Location Permission
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position)=>{
+                  const longitude = position.coords.longitude;
+                  const latitude = position.coords.latitude;
+                  this.getCoords().then((coords:any)=>{
+                    // console.log(coords.latitude)
+                  })
+                });
+            } else {
+              console.log("No support for geolocation")
+            }
+            }
+          }
+        ) :
+      // Permission API was not implemented
+      reject(new Error("Permission API is not supported"))
+    )
+  }
+
+  getAddressFromLatLong(latitude:any, longitude:any){
+    this.homepageService.getAddressFromLatLong(latitude, longitude).subscribe((res:any)=>{
+      if(res.status=="OK"){
+        this.addressLatLong = res.results[0].formatted_address
+        localStorage.setItem("geoAddressLocation", res.results[0].address_components[3].long_name)
+        localStorage.setItem("geoAddress", this.addressLatLong)
+        this.changeAddressTrigger = this.changeAddressTrigger + 1;
+      }
+    });
+    // this.bannerDetail("19.1396734", "72.9254585")
+  }
+
+  bannerDetail(lat:any, long:any){
+    var data = {
+      "latitude":lat,
+      "longitude":long
+    }
+    this.homepageService.bannerDetail(data).subscribe((res:any)=>{
+      if(res.status=="ture"){
+        this.bannerDetailData = res.data
+      }else{
+
+      }
+    });
   }
 
 }

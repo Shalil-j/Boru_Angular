@@ -276,6 +276,10 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("user_id", item.user_id)
             localStorage.setItem("user_code", item.user_code)
             localStorage.setItem("mobile", item.mobile)
+            if(item.first_name!="" || item.first_name!=null){
+              localStorage.setItem("user_name", item.first_name)
+              this.router.navigateByUrl("/")
+            }
           }
         }else{
           $('#otpDiv').addClass("error");
