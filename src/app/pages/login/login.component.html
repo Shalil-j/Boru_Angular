@@ -149,25 +149,29 @@
               <div>
                 <div id="selectimgDiv"
                 class=" row w-100 justify-content-between align-items-center border  m-0 position-relative py-2 rounded">
-                <input id="profile-img" (change)="checkProfileimg($event)" type="file"  accept="image/*" class="position-absolute bg-danger w-100 h-100 opacity-0" name="avatar">
+                <input id="profile-img" (change)="checkProfileimg($event)" type="file"  accept="image/x-png,image/gif,image/jpeg" class="position-absolute bg-danger w-100 h-100 opacity-0" name="avatar">
                 <div class="col-9 border-end fs-5 py-2">
                   <p> Personal Detail</p>
                 </div>
-                <image-cropper 
+                <div class="col-3 text-center py-1"><img class="md-icon" src="{{defaultImg}}" alt=""></div>
+                <image-cropper
                 id="images_cropper"
-                [imageChangedEvent]="imgChangeEvt" 
-                [maintainAspectRatio]="true" 
+                style="display: none;"
+                [imageChangedEvent]="imgChangeEvt"
+                [maintainAspectRatio]="true"
                 [aspectRatio]="4 / 4"
-                [resizeToWidth]="256" 
-                format="png" 
-                (imageCropped)="cropImg($event)" 
+                [resizeToWidth]="256"
+                format="png"
+                (imageCropped)="cropImg($event)"
                 (imageLoaded)="imgLoad()"
-                (cropperReady)="initCropper()" 
+                (cropperReady)="initCropper()"
                 (loadImageFailed)="imgFailed()">
               </image-cropper>
-              <button (click)="cropImage()" id="cropImgBtn">Done</button>
-                <div class="col-3 text-center py-1"><img class="lg-icon" src="{{defaultImg}}" alt=""></div>
-              </div>
+            </div>
+            <div class="d-flex justify-content-around text-xs mt-2 d-none" id="croperBtns">
+            <button (click)="cropImage()" id="cropImgBtn"  class="bg-transparent text-blue border-0">Done</button>
+            <button (click)="chooseother()" id="cropImgBtn"  class="bg-transparent text-blue border-0">Choose Another</button>
+          </div>
               <p class="text-xs text-danger pt-1" *ngIf="profileimgError">{{displayMsg}}</p>
               <!-- --------- -->
               <div>
@@ -184,7 +188,7 @@
               </div>
               <!--***********  -->
               <div>
-                <button id="profilelogin" type="submit" (click)="uploadProfile()" class=" btn btn-inactive login-btn w-100">Confirm</button>
+                <button id="profilelogin" type="submit" (click)="uploadProfile()" class=" btn btn-inactive login-btn w-100" disabled>Confirm</button>
             </div></div>
               </div>
             </form>

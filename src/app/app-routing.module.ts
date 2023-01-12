@@ -53,6 +53,7 @@ const routes: Routes = [
   {
     path: 'store', component: StorepageComponent,
     children: [
+
       { path: ':id', component: ProductlistComponentComponent },
       // { path: '', component: ProductComponent },
       { path: 'subscribed-products', component: SubscribedProductsComponent },

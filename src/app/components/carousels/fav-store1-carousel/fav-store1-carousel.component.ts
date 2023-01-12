@@ -51,7 +51,7 @@ export class FavStore1CarouselComponent implements OnInit {
       0: {
         items: 1
       },
-      400: {
+      500: {
         items: 2
       },
       740: {

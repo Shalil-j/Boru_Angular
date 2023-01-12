@@ -1,5 +1,22 @@
 <app-home-header-carousel></app-home-header-carousel>
-<app-catalogue-carousel></app-catalogue-carousel>
-<app-fav-store1-carousel></app-fav-store1-carousel>
+<app-catalogue-carousel class="d-none d-md-block"></app-catalogue-carousel>
+<!-- catalogue -->
+<div class="bg-white p-3 my-2 d-md-none">
+
+  <div class="row justify-content-around g-3">
+    <div class="col-3 text-center text-capitalize" *ngFor="let items of cataloguelist">
+      <a href="" class="page-link">
+      <div class="icon-div d-flex justify-content-center align-items-center bg-light-blue rounded">
+        <img class="lg-icon" src="{{items.catalogue_url}}" alt="">
+      </div>
+      <p class="mt-1">{{items.catalogue_name}}</p>
+    </a>
+    </div>
+  </div>
+
+</div>
+<!-- catalogue -->
+<app-fav-store1-carousel ></app-fav-store1-carousel>
+<app-subs-stores-carousel class="d-md-none"></app-subs-stores-carousel>
 <app-home-bottom-carousel></app-home-bottom-carousel>
 

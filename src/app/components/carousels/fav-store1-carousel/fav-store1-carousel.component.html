@@ -1,16 +1,21 @@
+
 <div class="p-2 p-md-5 bg-white" *ngIf="bannerDetailData">
   <h5>Your Favourite Store</h5>
   <owl-carousel-o [options]="customOptions" >
     <ng-template carouselSlide *ngFor="let items of bannerDetailData">
+
       <div class="store-div d-flex align-items-center p-2 rounded">
         <div class="store-logo">
           <img src="{{items.profile_pic}}" alt="{{items.shop_name}}" />
         </div>
         <div class="ms-3">
+
           <h5 class="">{{items.shop_name}}</h5>
           <p class="text-xs">{{items.shop_address}}</p>
+
         </div>
       </div>
+    </a>
     </ng-template>
   </owl-carousel-o>
   </div>
